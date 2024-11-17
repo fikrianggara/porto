@@ -234,14 +234,14 @@ const Page = () => {
           </h1>
           <div className="text-white text-start w-11/12 md:w-[40rem] text-lg md:text-xl lg:text-2xl leading-tight self-center space-y-6 md:space-y-8">
             <p className="text-sm md:text-base lg:text-xl">
-              I'm a Web Developer by hobbies with 2 years of experience building
-              web apps and based in Jambi, Indonesia. Currently I work as Civil
-              Servant at Statistics Indonesia.
+              I&apos;m a Web Developer by hobbies with 2 years of experience
+              building web apps and based in Jambi, Indonesia. Currently I work
+              as Civil Servant at Statistics Indonesia.
             </p>
             <p className="text-sm md:text-base lg:text-xl">
               I use my knowledge to tackle business problems variying from data
               processing, analysis, app development, IT support and field
-              enumeration of statistics indonesia's survey
+              enumeration of statistics indonesia&apos;s survey
             </p>
             <p className="text-sm md:text-base lg:text-xl">
               Nextjs and tailwindcss is my main tool to develop app, while
