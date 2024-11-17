@@ -254,7 +254,7 @@ const Page = () => {
           </div>
         </div>
       </HighlightDiv>
-      <div className="flex flex-col h-fit md:m-auto w-11/12 md:w-[40rem] p-8 md:p-0 md:py-10 space-y-10">
+      <div className="flex flex-col h-fit md:m-auto md:w-[40rem] p-8 md:p-0 md:py-10 space-y-10">
         <div className="space-y-4">
           <h2 className="text-2xl md:text-4xl font-bold dark:text-white">
             My projects
