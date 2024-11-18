@@ -257,7 +257,7 @@ const Page = () => {
               <p className="text-sm md:text-base lg:text-xl leading-thight md:leading-loose">
                 I&apos;m a <strong>Web Developer</strong> by hobby with 2 years
                 of experience building web apps, based in Jambi, Indonesia.
-                Currently I work as Civil Servant at Statistics Indonesia.
+                Currently, I work as Civil Servant at Statistics Indonesia.
               </p>
               <p className="text-sm md:text-base lg:text-xl leading-thight md:leading-loose">
                 I use my knowledge to tackle business problems varying from{" "}
