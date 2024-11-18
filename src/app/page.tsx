@@ -296,7 +296,7 @@ const Page = () => {
                 <Link href={project.link} className="space-y-4">
                   <Image
                     src={project.thumbnail}
-                    width={300}
+                    width={330}
                     height={400}
                     alt={project.title}
                     className="rounded-lg aspect-video object-cover object-top"
