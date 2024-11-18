@@ -252,9 +252,9 @@ const Page = () => {
           </h1>
           <div className="text-white text-start w-11/12 md:w-[40rem] text-lg md:text-xl lg:text-2xl leading-tight self-center space-y-6 md:space-y-8 font-thin">
             <p className="text-sm md:text-base lg:text-xl leading-thight md:leading-loose">
-              I&apos;m a Web Developer by hobbies with 2 years of experience
-              building web apps and based in Jambi, Indonesia. Currently I work
-              as Civil Servant at Statistics Indonesia.
+              I&apos;m a <strong>Web Developer</strong> by hobby with 2 years of
+              experience building web apps and based in Jambi, Indonesia.
+              Currently I work as Civil Servant at Statistics Indonesia.
             </p>
             <p className="text-sm md:text-base lg:text-xl leading-thight md:leading-loose">
               I use my knowledge to tackle business problems variying from{" "}
