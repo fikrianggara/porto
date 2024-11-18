@@ -253,25 +253,25 @@ const Page = () => {
           <div className="text-white text-start w-11/12 md:w-[40rem] text-lg md:text-xl lg:text-2xl leading-tight self-center space-y-6 md:space-y-8 font-thin">
             <p className="text-sm md:text-base lg:text-xl leading-thight md:leading-loose">
               I&apos;m a <strong>Web Developer</strong> by hobby with 2 years of
-              experience building web apps and based in Jambi, Indonesia.
-              Currently I work as Civil Servant at Statistics Indonesia.
+              experience building web apps, based in Jambi, Indonesia. Currently
+              I work as Civil Servant at Statistics Indonesia.
             </p>
             <p className="text-sm md:text-base lg:text-xl leading-thight md:leading-loose">
-              I use my knowledge to tackle business problems variying from{" "}
+              I use my knowledge to tackle business problems varying from{" "}
               <strong>
                 data processing, analysis, app development, IT support and field
-                enumeration of statistics indonesia&apos;s survey
+                enumeration of statistics indonesia&apos;s surveys
               </strong>
             </p>
             <p className="text-sm md:text-base lg:text-xl leading-thight md:leading-loose">
               <strong>Nextjs</strong>, <strong>Tailwindcss</strong>, and{" "}
-              <strong>Supabase</strong> is my main tool to develop app, while
+              <strong>Supabase</strong> are my main tool to develop app, while
               <strong>Python</strong> are used for data processing, analysis and
               task automation.
             </p>
             <p className="text-sm md:text-base lg:text-xl leading-thight md:leading-loose">
-              I also loves music and sports and loves to spend my free time
-              learning these stuff.
+              I also love music and sports and enjoy spending my free time
+              learning these stuffs.
             </p>
           </div>
         </div>
