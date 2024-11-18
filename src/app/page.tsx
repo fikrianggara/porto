@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { HighlightDiv } from "@/components/ui/hero-highlights";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -14,6 +14,8 @@ import {
   IconBrandTailwind,
   IconBrandTypescript,
   IconBrandX,
+  IconChevronLeft,
+  IconChevronRight,
 } from "@tabler/icons-react";
 
 const projects = [
@@ -225,6 +227,22 @@ const socialMedia = [
   },
 ];
 const Page = () => {
+  const [cardIndex, setCardIndex] = useState(0);
+
+  const onChevronRightClick = () => {
+    if (cardIndex < projects.length - 1) {
+      setCardIndex(cardIndex + 1);
+    } else {
+      setCardIndex(0);
+    }
+  };
+  const onChevronLeftClick = () => {
+    if (cardIndex > 0) {
+      setCardIndex(cardIndex - 1);
+    } else {
+      setCardIndex(projects.length - 1);
+    }
+  };
   return (
     <div className="relative bg-white dark:bg-black ">
       <HighlightDiv className="items-start justify-center m-auto h-fit p-8 py-10 space-y-10">
@@ -266,7 +284,13 @@ const Page = () => {
         <ul className="flex flex-nowrap gap-2 md:gap-4 overflow-x-scroll">
           {projects.map((project, idx) => {
             return (
-              <li key={idx} className="flex-none w-fit ">
+              <li
+                key={idx}
+                className="flex-none w-fit duration-500 ease-in-out"
+                style={{
+                  transform: `translateX(-${cardIndex * 100}%)`,
+                }}
+              >
                 <Link href={project.link} className="space-y-4">
                   <Image
                     src={project.thumbnail}
@@ -293,6 +317,20 @@ const Page = () => {
             );
           })}
         </ul>
+        <div className="flex flex-row items-center space-x-4 self-end">
+          <div
+            className="rounded-full w-8 h-8 flex items-center justify-center border text-white hover:text-black hover:bg-white cursor-pointer"
+            onClick={onChevronLeftClick}
+          >
+            <IconChevronLeft className="w-5 h-5 cursor-pointer" />
+          </div>
+          <div
+            className="rounded-full w-8 h-8 flex items-center justify-center border text-white hover:text-black hover:bg-white cursor-pointer"
+            onClick={onChevronRightClick}
+          >
+            <IconChevronRight className="w-6 h-6 cursor-pointer" />
+          </div>
+        </div>
       </div>
       <div className="h-[30rem] w-full dark:bg-black bg-white  dark:bg-grid-white/[0.2] bg-grid-black/[0.2] relative flex flex-col items-center justify-center space-y-36">
         {/* Radial gradient for the container to give a faded look */}
