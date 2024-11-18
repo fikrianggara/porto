@@ -11,7 +11,7 @@ const Navbar = () => {
             className="flex flex-col group text-sm md:text-base"
           >
             About{" "}
-            <span className="w-0 group-hover:w-3/4 duration-300 ease-in-out h-0.5 bg-green-500"></span>
+            <span className="w-0 group-hover:w-3/4 duration-300 ease-in-out h-0.5 bg-gradient-to-r from-emerald-300 to-purple-300 dark:from-teal-500 dark:to-purple-500"></span>
           </Link>
         </li>
         <li className="flex-1">
@@ -20,7 +20,7 @@ const Navbar = () => {
             className="flex flex-col group text-sm md:text-base"
           >
             Projects{" "}
-            <span className="w-0 group-hover:w-3/4 duration-300 ease-in-out h-0.5 bg-green-500 "></span>
+            <span className="w-0 group-hover:w-3/4 duration-300 ease-in-out h-0.5 bg-gradient-to-r from-emerald-300 to-purple-300 dark:from-teal-500 dark:to-purple-500 "></span>
           </Link>
         </li>
         <li className="flex-1">
@@ -29,7 +29,7 @@ const Navbar = () => {
             className="flex flex-col group text-sm md:text-base"
           >
             Contact{" "}
-            <span className="w-0 group-hover:w-3/4 duration-300 ease-in-out h-0.5 bg-green-500"></span>
+            <span className="w-0 group-hover:w-3/4 duration-300 ease-in-out h-0.5 bg-gradient-to-r from-emerald-300 to-purple-300 dark:from-teal-500 dark:to-purple-500"></span>
           </Link>
         </li>
       </ul>

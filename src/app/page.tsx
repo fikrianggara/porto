@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
-import { HighlightDiv } from "@/components/ui/hero-highlights";
-import { motion } from "framer-motion";
+import { HighlightDiv, Highlight } from "@/components/ui/hero-highlights";
+import { motion, stagger } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -243,33 +243,76 @@ const Page = () => {
       <div id="hero">
         <HighlightDiv className="items-start justify-center m-auto h-fit p-8 py-10 space-y-10">
           <div className="space-y-6 md:space-y-8">
-            <h1 className="text-4xl lg:text-7xl font-bold dark:text-white">
-              Hi, I&lsquo;m Fikri
-            </h1>
-            <div className="text-white text-start w-11/12 md:w-[40rem] text-lg md:text-xl lg:text-2xl leading-tight self-center space-y-6 md:space-y-8 font-thin">
-              <p className="text-sm md:text-base lg:text-xl leading-thight md:leading-loose">
+            <motion.div
+              className="text-white text-start w-11/12 md:w-[40rem] text-lg md:text-xl lg:text-2xl leading-tight self-center space-y-6 md:space-y-8 font-thin"
+              variants={{
+                hidden: { opacity: 0 },
+                visible: {
+                  opacity: 1,
+                  transition: {
+                    staggerChildren: 2,
+                  },
+                },
+              }}
+              initial="hidden"
+              animate="visible"
+            >
+              <motion.h1
+                className="text-4xl lg:text-7xl font-bold dark:text-white"
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: { opacity: 1, transition: { duration: 3 } },
+                }}
+              >
+                Hi, I&lsquo;m Fikri
+              </motion.h1>
+              <motion.p
+                className="text-sm md:text-base lg:text-xl leading-thight md:leading-loose"
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: { opacity: 1, transition: { duration: 3 } },
+                }}
+              >
                 I&apos;m a <strong>Web Developer</strong> by hobby with 2 years
                 of experience building web apps, based in Jambi, Indonesia.
                 Currently, I work as Civil Servant at Statistics Indonesia.
-              </p>
-              <p className="text-sm md:text-base lg:text-xl leading-thight md:leading-loose">
+              </motion.p>
+              <motion.p
+                className="text-sm md:text-base lg:text-xl leading-thight md:leading-loose"
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: { opacity: 1, transition: { duration: 3 } },
+                }}
+              >
                 I use my knowledge to tackle business problems varying from{" "}
                 <strong>
                   data processing, analysis, app development, IT support and
                   field enumeration of statistics indonesia&apos;s surveys
                 </strong>
-              </p>
-              <p className="text-sm md:text-base lg:text-xl leading-thight md:leading-loose">
+              </motion.p>
+              <motion.p
+                className="text-sm md:text-base lg:text-xl leading-thight md:leading-loose"
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: { opacity: 1, transition: { duration: 3 } },
+                }}
+              >
                 <strong>Nextjs</strong>, <strong>Tailwindcss</strong>, and{" "}
                 <strong>Supabase</strong> are my main tool to develop app, while{" "}
                 <strong>Python</strong> are used for data processing, analysis
                 and task automation.
-              </p>
-              <p className="text-sm md:text-base lg:text-xl leading-thight md:leading-loose">
+              </motion.p>
+              <motion.p
+                className="text-sm md:text-base lg:text-xl leading-thight md:leading-loose"
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: { opacity: 1, transition: { duration: 3 } },
+                }}
+              >
                 I also love music and sports and enjoy spending my free time
                 learning these stuffs.
-              </p>
-            </div>
+              </motion.p>
+            </motion.div>
           </div>
         </HighlightDiv>
       </div>
@@ -284,14 +327,33 @@ const Page = () => {
             I try to solve real-world problems through my projects.
           </p>
         </div>
-        <ul className="flex flex-nowrap gap-2 md:gap-4 overflow-x-scroll">
+        <motion.ul
+          className="flex flex-nowrap gap-2 md:gap-4 overflow-x-scroll"
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: {
+                // delay: 1,
+                staggerChildren: 1,
+              },
+            },
+          }}
+          initial="hidden"
+          animate="visible"
+          whileInView={{ opacity: 1 }}
+        >
           {projects.map((project, idx) => {
             return (
-              <li
+              <motion.li
                 key={idx}
                 className="flex-none w-fit duration-500 ease-in-out"
                 style={{
                   transform: `translateX(-${cardIndex * 100}%)`,
+                }}
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: { opacity: 1, transition: { duration: 2 } },
                 }}
               >
                 <Link href={project.link} className="space-y-4">
@@ -316,10 +378,10 @@ const Page = () => {
                     ))}
                   </ul>
                 </Link>
-              </li>
+              </motion.li>
             );
           })}
-        </ul>
+        </motion.ul>
         <div className="flex flex-row items-center space-x-4 self-end">
           <div
             className="rounded-full w-8 h-8 flex items-center justify-center border text-white hover:text-black hover:bg-white cursor-pointer"
