@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
-import { HighlightDiv, Highlight } from "@/components/ui/hero-highlights";
-import { motion, stagger } from "framer-motion";
+import { HighlightDiv } from "@/components/ui/hero-highlights";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import {
