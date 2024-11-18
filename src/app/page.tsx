@@ -231,26 +231,12 @@ const Page = () => {
   const [cardIndex, setCardIndex] = useState(0);
 
   const onChevronRightClick = () => {
-    if (cardIndex < projects.length - 1) {
-      setCardIndex(cardIndex + 1);
-    } else {
-      setCardIndex(0);
-    }
+    setCardIndex(() => (cardIndex + 1) % projects.length);
   };
   const onChevronLeftClick = () => {
-    if (cardIndex > 0) {
-      setCardIndex(cardIndex - 1);
-    } else {
-      setCardIndex(projects.length - 1);
-    }
+    setCardIndex(() => (cardIndex - 1) % projects.length);
   };
-  setInterval(() => {
-    if (cardIndex < projects.length - 1) {
-      setCardIndex(cardIndex + 1);
-    } else {
-      setCardIndex(0);
-    }
-  }, 3000);
+
   return (
     <div className="relative bg-white dark:bg-black ">
       <Navbar />
