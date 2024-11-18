@@ -17,6 +17,7 @@ import {
   IconChevronLeft,
   IconChevronRight,
 } from "@tabler/icons-react";
+import Navbar from "@/components/navbar";
 
 const projects = [
   {
@@ -245,38 +246,45 @@ const Page = () => {
   };
   return (
     <div className="relative bg-white dark:bg-black ">
-      <HighlightDiv className="items-start justify-center m-auto h-fit p-8 py-10 space-y-10">
-        <div className="space-y-6 md:space-y-8">
-          <h1 className="text-4xl lg:text-7xl font-bold dark:text-white">
-            Hi, I&lsquo;m Fikri
-          </h1>
-          <div className="text-white text-start w-11/12 md:w-[40rem] text-lg md:text-xl lg:text-2xl leading-tight self-center space-y-6 md:space-y-8 font-thin">
-            <p className="text-sm md:text-base lg:text-xl leading-thight md:leading-loose">
-              I&apos;m a <strong>Web Developer</strong> by hobby with 2 years of
-              experience building web apps, based in Jambi, Indonesia. Currently
-              I work as Civil Servant at Statistics Indonesia.
-            </p>
-            <p className="text-sm md:text-base lg:text-xl leading-thight md:leading-loose">
-              I use my knowledge to tackle business problems varying from{" "}
-              <strong>
-                data processing, analysis, app development, IT support and field
-                enumeration of statistics indonesia&apos;s surveys
-              </strong>
-            </p>
-            <p className="text-sm md:text-base lg:text-xl leading-thight md:leading-loose">
-              <strong>Nextjs</strong>, <strong>Tailwindcss</strong>, and{" "}
-              <strong>Supabase</strong> are my main tool to develop app, while{" "}
-              <strong>Python</strong> are used for data processing, analysis and
-              task automation.
-            </p>
-            <p className="text-sm md:text-base lg:text-xl leading-thight md:leading-loose">
-              I also love music and sports and enjoy spending my free time
-              learning these stuffs.
-            </p>
+      <Navbar />
+      <div id="hero">
+        <HighlightDiv className="items-start justify-center m-auto h-fit p-8 py-10 space-y-10">
+          <div className="space-y-6 md:space-y-8">
+            <h1 className="text-4xl lg:text-7xl font-bold dark:text-white">
+              Hi, I&lsquo;m Fikri
+            </h1>
+            <div className="text-white text-start w-11/12 md:w-[40rem] text-lg md:text-xl lg:text-2xl leading-tight self-center space-y-6 md:space-y-8 font-thin">
+              <p className="text-sm md:text-base lg:text-xl leading-thight md:leading-loose">
+                I&apos;m a <strong>Web Developer</strong> by hobby with 2 years
+                of experience building web apps, based in Jambi, Indonesia.
+                Currently I work as Civil Servant at Statistics Indonesia.
+              </p>
+              <p className="text-sm md:text-base lg:text-xl leading-thight md:leading-loose">
+                I use my knowledge to tackle business problems varying from{" "}
+                <strong>
+                  data processing, analysis, app development, IT support and
+                  field enumeration of statistics indonesia&apos;s surveys
+                </strong>
+              </p>
+              <p className="text-sm md:text-base lg:text-xl leading-thight md:leading-loose">
+                <strong>Nextjs</strong>, <strong>Tailwindcss</strong>, and{" "}
+                <strong>Supabase</strong> are my main tool to develop app, while{" "}
+                <strong>Python</strong> are used for data processing, analysis
+                and task automation.
+              </p>
+              <p className="text-sm md:text-base lg:text-xl leading-thight md:leading-loose">
+                I also love music and sports and enjoy spending my free time
+                learning these stuffs.
+              </p>
+            </div>
           </div>
-        </div>
-      </HighlightDiv>
-      <div className="flex flex-col h-fit md:m-auto md:w-[40rem] p-8 md:p-0 md:py-10 space-y-10">
+        </HighlightDiv>
+      </div>
+
+      <div
+        id="project"
+        className="flex flex-col h-fit md:m-auto md:w-[40rem] p-8 md:p-0 md:py-10 space-y-10"
+      >
         <div className="space-y-4">
           <h2 className="text-2xl font-bold dark:text-white">My projects</h2>
           <p className="text-sm md:text-base lg:text-xl text-white font-thin">
@@ -334,7 +342,10 @@ const Page = () => {
           </div>
         </div>
       </div>
-      <div className="h-[30rem] w-full dark:bg-black bg-white  dark:bg-grid-white/[0.2] bg-grid-black/[0.2] relative flex flex-col items-center justify-center space-y-36">
+      <div
+        id="contact"
+        className="h-[30rem] w-full dark:bg-black bg-white  dark:bg-grid-white/[0.2] bg-grid-black/[0.2] relative flex flex-col items-center justify-center space-y-36"
+      >
         {/* Radial gradient for the container to give a faded look */}
         <div className="absolute pointer-events-none inset-0 flex dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
         <h2 className="text-2xl md:text-4xl font-bold dark:text-white">
