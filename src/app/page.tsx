@@ -278,9 +278,7 @@ const Page = () => {
       </HighlightDiv>
       <div className="flex flex-col h-fit md:m-auto md:w-[40rem] p-8 md:p-0 md:py-10 space-y-10">
         <div className="space-y-4">
-          <h2 className="text-2xl md:text-4xl font-bold dark:text-white">
-            My projects
-          </h2>
+          <h2 className="text-2xl font-bold dark:text-white">My projects</h2>
           <p className="text-sm md:text-base lg:text-xl text-white font-thin">
             I try to solve real-world problems through my projects.
           </p>
@@ -310,7 +308,7 @@ const Page = () => {
                     {project.stack.map((stack, idx) => (
                       <li
                         key={idx}
-                        className="text-xs border border-white rounded-full py-0.5 px-2 text-white font-thin"
+                        className="text-xs border border-white border-[0.5px] rounded-full py-0.5 px-2 text-white font-thin"
                       >
                         {stack.name}
                       </li>
