@@ -244,6 +244,13 @@ const Page = () => {
       setCardIndex(projects.length - 1);
     }
   };
+  setInterval(() => {
+    if (cardIndex < projects.length - 1) {
+      setCardIndex(cardIndex + 1);
+    } else {
+      setCardIndex(0);
+    }
+  }, 3000);
   return (
     <div className="relative bg-white dark:bg-black ">
       <Navbar />
