@@ -294,11 +294,11 @@ const Page = () => {
           })}
         </ul>
       </div>
-      <div className="h-[50rem] w-full dark:bg-black bg-white  dark:bg-grid-white/[0.2] bg-grid-black/[0.2] relative flex flex-col items-center justify-center space-y-36">
+      <div className="h-[30rem] w-full dark:bg-black bg-white  dark:bg-grid-white/[0.2] bg-grid-black/[0.2] relative flex flex-col items-center justify-center space-y-36">
         {/* Radial gradient for the container to give a faded look */}
         <div className="absolute pointer-events-none inset-0 flex dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
         <h2 className="text-2xl md:text-4xl font-bold dark:text-white">
-          Let&lsquo;s Connect
+          Get in touch
         </h2>
 
         <motion.ul
@@ -308,7 +308,7 @@ const Page = () => {
             visible: { opacity: 1 },
             hidden: { opacity: 0 },
           }}
-          className="w-8/12 md:w-1/3 flex flex-col md:flex-row m-auto justify-center md:justify-between md:items-center m-auto space-y-4 md:space-y-0"
+          className="w-1/2 md:w-[20rem] flex flex-row m-auto justify-center md:justify-between md:items-center space-x-4"
         >
           {socialMedia.map((social, idx) => {
             return (
@@ -329,7 +329,7 @@ const Page = () => {
                   className="text-white flex space-x-4 items-center"
                 >
                   {social.icon}
-                  <div className="text-sm md:text-xl">{social.name}</div>
+                  {/* <div className="text-sm md:text-xl">{social.name}</div> */}
                 </Link>
               </motion.li>
             );
