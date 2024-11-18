@@ -250,22 +250,26 @@ const Page = () => {
           <h1 className="text-4xl lg:text-7xl font-bold dark:text-white">
             Hi, I&lsquo;m Fikri
           </h1>
-          <div className="text-white text-start w-11/12 md:w-[40rem] text-lg md:text-xl lg:text-2xl leading-tight self-center space-y-6 md:space-y-8">
-            <p className="text-sm md:text-base lg:text-xl">
+          <div className="text-white text-start w-11/12 md:w-[40rem] text-lg md:text-xl lg:text-2xl leading-tight self-center space-y-6 md:space-y-8 font-thin">
+            <p className="text-sm md:text-base lg:text-xl leading-thight md:leading-loose">
               I&apos;m a Web Developer by hobbies with 2 years of experience
               building web apps and based in Jambi, Indonesia. Currently I work
               as Civil Servant at Statistics Indonesia.
             </p>
-            <p className="text-sm md:text-base lg:text-xl">
-              I use my knowledge to tackle business problems variying from data
-              processing, analysis, app development, IT support and field
-              enumeration of statistics indonesia&apos;s survey
+            <p className="text-sm md:text-base lg:text-xl leading-thight md:leading-loose">
+              I use my knowledge to tackle business problems variying from{" "}
+              <strong>
+                data processing, analysis, app development, IT support and field
+                enumeration of statistics indonesia&apos;s survey
+              </strong>
             </p>
-            <p className="text-sm md:text-base lg:text-xl">
-              Nextjs and tailwindcss is my main tool to develop app, while
-              python are used for data processing, analysis and task automation.
+            <p className="text-sm md:text-base lg:text-xl leading-thight md:leading-loose">
+              <strong>Nextjs</strong>, <strong>Tailwindcss</strong>, and{" "}
+              <strong>Supabase</strong> is my main tool to develop app, while
+              <strong>Python</strong> are used for data processing, analysis and
+              task automation.
             </p>
-            <p className="text-sm md:text-base lg:text-xl">
+            <p className="text-sm md:text-base lg:text-xl leading-thight md:leading-loose">
               I also loves music and sports and loves to spend my free time
               learning these stuff.
             </p>
@@ -277,7 +281,7 @@ const Page = () => {
           <h2 className="text-2xl md:text-4xl font-bold dark:text-white">
             My projects
           </h2>
-          <p className="text-sm md:text-base lg:text-xl text-white">
+          <p className="text-sm md:text-base lg:text-xl text-white font-thin">
             I try to solve real-world problems through my projects.
           </p>
         </div>
@@ -294,19 +298,19 @@ const Page = () => {
                 <Link href={project.link} className="space-y-4">
                   <Image
                     src={project.thumbnail}
-                    width={400}
+                    width={300}
                     height={400}
                     alt={project.title}
                     className="rounded-lg aspect-video object-cover object-top"
                   />
-                  <h3 className="text-sm md:text-xl text-white font-medium">
+                  <h3 className="text-base md:text-xl text-white font-medium w-[18rem]">
                     {project.title}
                   </h3>
-                  <ul className="flex gap-2 flex-wrap">
+                  <ul className="flex gap-2 flex-wrap w-fit w-[18rem]">
                     {project.stack.map((stack, idx) => (
                       <li
                         key={idx}
-                        className="text-xs border border-white rounded-full py-1 px-2 text-white"
+                        className="text-xs border border-white rounded-full py-0.5 px-2 text-white font-thin"
                       >
                         {stack.name}
                       </li>
