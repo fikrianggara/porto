@@ -265,7 +265,7 @@ const Page = () => {
             </p>
             <p className="text-sm md:text-base lg:text-xl leading-thight md:leading-loose">
               <strong>Nextjs</strong>, <strong>Tailwindcss</strong>, and{" "}
-              <strong>Supabase</strong> are my main tool to develop app, while
+              <strong>Supabase</strong> are my main tool to develop app, while{" "}
               <strong>Python</strong> are used for data processing, analysis and
               task automation.
             </p>
