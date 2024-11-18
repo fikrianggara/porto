@@ -49,7 +49,7 @@ module.exports = {
         {
           "bg-dot-thick": (value: any) => ({
             backgroundImage: `url("${svgToDataUri(
-              `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="36" height="36" fill="none"><circle fill="${value}" id="pattern-circle" cx="10" cy="10" r="2"></circle></svg>`
+              `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="12" height="12" fill="none"><circle fill="${value}" id="pattern-circle" cx="10" cy="10" r="2"></circle></svg>`
             )}")`,
           }),
           "bg-grid": (value: any) => ({
