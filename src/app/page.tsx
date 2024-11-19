@@ -19,6 +19,7 @@ import {
   IconBrandX,
   IconChevronLeft,
   IconChevronRight,
+  IconMail,
   IconPointFilled,
 } from "@tabler/icons-react";
 import Navbar from "@/components/navbar";
@@ -184,7 +185,7 @@ const projects = [
         icon: <IconBrandDocker size={36} />,
       },
     ],
-    domain: ["Microservice"],
+    domain: ["Distributed System"],
   },
   {
     title: "Airbnb Clone",
@@ -328,24 +329,30 @@ const projects = [
 
 const socialMedia = [
   {
-    name: "Github",
-    link: "https://github.com/fikrianggara",
-    icon: <IconBrandGithub size={36} />,
-  },
-  {
     name: "Linkedin",
     link: "https://www.linkedin.com/in/fikri-septrian-anggara/",
-    icon: <IconBrandLinkedin size={36} />,
+    icon: <IconBrandLinkedin size={24} />,
   },
+  {
+    name: "Email",
+    link: "mailto:dev.fikrianggara@gmail.com",
+    icon: <IconMail size={24} />,
+  },
+  {
+    name: "Github",
+    link: "https://github.com/fikrianggara",
+    icon: <IconBrandGithub size={24} />,
+  },
+
   {
     name: "X",
     link: "https://x.com/dobequalnsd",
-    icon: <IconBrandX size={36} />,
+    icon: <IconBrandX size={24} />,
   },
   {
     name: "Instagram",
     link: "https://instagram.com/fikrianggara",
-    icon: <IconBrandInstagram size={36} />,
+    icon: <IconBrandInstagram size={24} />,
   },
 ];
 
@@ -679,7 +686,14 @@ const Page = () => {
           initial="hidden"
           whileInView="visible"
           variants={{
-            visible: { opacity: 1 },
+            visible: {
+              opacity: 1,
+              transition: {
+                // delay: 6,
+                staggerChildren: 0.25,
+                duration: 2,
+              },
+            },
             hidden: { opacity: 0 },
           }}
           className="w-1/2 md:w-[20rem] flex flex-row m-auto justify-center md:justify-between md:items-center space-x-4"
@@ -688,14 +702,11 @@ const Page = () => {
             return (
               <motion.li
                 key={idx}
-                initial="hidden"
-                whileInView="visible"
+                // initial="hidden"
+                // whileInView="visible"
                 variants={{
                   hidden: { opacity: 0 },
-                  visible: (index) => ({
-                    opacity: 1,
-                    transition: { delay: index * 0.3 },
-                  }),
+                  visible: { opacity: 1, transition: { duration: 1 } },
                 }}
               >
                 <Link
