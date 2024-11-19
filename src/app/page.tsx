@@ -403,7 +403,7 @@ const Page = () => {
                 className="text-4xl lg:text-7xl font-bold dark:text-white"
                 variants={{
                   hidden: { opacity: 0 },
-                  visible: { opacity: 1, transition: { duration: 3 } },
+                  visible: { opacity: 1, transition: { duration: 1 } },
                 }}
               >
                 Hi, I&lsquo;m Fikri
@@ -412,7 +412,7 @@ const Page = () => {
                 className="text-sm md:text-base lg:text-xl leading-thight md:leading-loose"
                 variants={{
                   hidden: { opacity: 0 },
-                  visible: { opacity: 1, transition: { duration: 3 } },
+                  visible: { opacity: 1, transition: { duration: 1 } },
                 }}
               >
                 I&apos;m a <strong>Web Developer</strong> by hobby with 2 years
@@ -423,7 +423,7 @@ const Page = () => {
                 className="text-sm md:text-base lg:text-xl leading-thight md:leading-loose"
                 variants={{
                   hidden: { opacity: 0 },
-                  visible: { opacity: 1, transition: { duration: 3 } },
+                  visible: { opacity: 1, transition: { duration: 1 } },
                 }}
               >
                 I use my knowledge to tackle business problems varying from{" "}
@@ -437,7 +437,7 @@ const Page = () => {
                 className="text-sm md:text-base lg:text-xl leading-thight md:leading-loose"
                 variants={{
                   hidden: { opacity: 0 },
-                  visible: { opacity: 1, transition: { duration: 3 } },
+                  visible: { opacity: 1, transition: { duration: 1 } },
                 }}
               >
                 I also love music and sports and enjoy spending my free time
