@@ -36,7 +36,7 @@ export const HighlightDiv = ({
     >
       <div className="absolute inset-0 bg-dot-thick-neutral-300 dark:bg-dot-thick-neutral-800  pointer-events-none bg-gradient-to-b from-black via-black to-transparent" />
       <div
-        className="pointer-events-none bg-dot-thick-purple-500 dark:bg-dot-thick-purple-500   absolute inset-0 opacity-100 md:opacity-0 transition duration-300 "
+        className="pointer-events-none bg-dot-thick-purple-500 dark:bg-dot-thick-purple-500  absolute inset-0 opacity-100 md:opacity-0 transition duration-300 animate-pulse"
         style={{
           WebkitMaskImage: `
           radial-gradient(

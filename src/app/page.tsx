@@ -1,21 +1,25 @@
 "use client";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { HighlightDiv } from "@/components/ui/hero-highlights";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import {
+  IconBrandDocker,
+  IconBrandFlutter,
   IconBrandGithub,
   IconBrandInstagram,
   IconBrandLinkedin,
   IconBrandNextjs,
   IconBrandPython,
+  IconBrandReact,
   IconBrandSupabase,
   IconBrandTailwind,
   IconBrandTypescript,
   IconBrandX,
   IconChevronLeft,
   IconChevronRight,
+  IconPointFilled,
 } from "@tabler/icons-react";
 import Navbar from "@/components/navbar";
 
@@ -72,25 +76,7 @@ const projects = [
         icon: <IconBrandTypescript size={36} />,
       },
     ],
-  },
-  {
-    title: "SIITUNG V2 - Sistem Informasi Tungkal",
-    link: "https://siitung-bps1507.vercel.app/",
-    thumbnail: "/assets/siitung.png",
-    stack: [
-      {
-        name: "NextJS",
-        icon: <IconBrandNextjs size={36} />,
-      },
-      {
-        name: "TailwindCSS",
-        icon: <IconBrandTailwind size={36} />,
-      },
-      {
-        name: "TypeScript",
-        icon: <IconBrandTypescript size={36} />,
-      },
-    ],
+    domain: ["Web Development"],
   },
   {
     title: "Cuecard Statistik Jambi",
@@ -114,6 +100,27 @@ const projects = [
         icon: <IconBrandSupabase size={36} />,
       },
     ],
+    domain: ["Web Development"],
+  },
+  {
+    title: "SIITUNG V2 - Sistem Informasi Tungkal",
+    link: "https://siitung-bps1507.vercel.app/",
+    thumbnail: "/assets/siitung.png",
+    stack: [
+      {
+        name: "NextJS",
+        icon: <IconBrandNextjs size={36} />,
+      },
+      {
+        name: "TailwindCSS",
+        icon: <IconBrandTailwind size={36} />,
+      },
+      {
+        name: "TypeScript",
+        icon: <IconBrandTypescript size={36} />,
+      },
+    ],
+    domain: ["Web Development", "Data Visualization"],
   },
   {
     title: "Konreg PDRB Sumatera 2024",
@@ -133,6 +140,63 @@ const projects = [
         icon: <IconBrandTypescript size={36} />,
       },
     ],
+    domain: ["Web Development"],
+  },
+  {
+    title: "Stock Fundamental Indicator Analysis using DBSCAN",
+    link: "https://github.com/fikrianggara/applied-ML-dicoding/blob/main/submission1/README.md",
+    thumbnail: "/assets/stock-analysis.png",
+    stack: [
+      {
+        name: "Python",
+        icon: <IconBrandPython size={36} />,
+      },
+    ],
+    domain: ["Data Science", "Machine Learning"],
+  },
+  {
+    title: "Transjakarta Passengers Number Forecasting using SARIMAX",
+    link: "https://github.com/fikrianggara/indathon-round1-2024/blob/main/main.ipynb",
+    thumbnail: "/assets/transjakarta-passenger-forecasting.png",
+    stack: [
+      {
+        name: "Python",
+        icon: <IconBrandPython size={36} />,
+      },
+    ],
+    domain: ["Data Science"],
+  },
+  {
+    title: "Microservice Impementation",
+    link: "https://github.com/fikrianggara/data-science-and-machine-learning",
+    thumbnail: "/assets/microservice.png",
+    stack: [
+      {
+        name: "Docker",
+        icon: <IconBrandDocker size={36} />,
+      },
+      {
+        name: "Kubernetes",
+        icon: <IconBrandDocker size={36} />,
+      },
+      {
+        name: "Istio",
+        icon: <IconBrandDocker size={36} />,
+      },
+    ],
+    domain: ["Microservice"],
+  },
+  {
+    title: "Airbnb Clone",
+    link: "https://github.com/fikrianggara/flutter-airbnb-clone",
+    thumbnail: "/assets/airbnb.png",
+    stack: [
+      {
+        name: "Flutter",
+        icon: <IconBrandFlutter size={36} />,
+      },
+    ],
+    domain: ["Mobile Development"],
   },
   {
     title: "SIMOSI - Sistem Monitorin Survei",
@@ -156,6 +220,44 @@ const projects = [
         icon: <IconBrandSupabase size={36} />,
       },
     ],
+    domain: ["Web Development"],
+  },
+  {
+    title: "Machine Learning Implementation with R",
+    link: "https://github.com/fikrianggara/machine-learning-algorithm-with-R",
+    thumbnail: "/assets/ml-r.png",
+    stack: [
+      {
+        name: "R",
+        icon: <IconBrandPython size={36} />,
+      },
+    ],
+    domain: ["Data Science", "Machine Learning"],
+  },
+
+  {
+    title: "Multivariate Analysis using R",
+    link: "https://github.com/fikrianggara/Multivariate-Analysis-on-R",
+    thumbnail: "/assets/multivariate-r.png",
+    stack: [
+      {
+        name: "R",
+        icon: <IconBrandPython size={36} />,
+      },
+    ],
+    domain: ["Data Analysis", "Statistics"],
+  },
+  {
+    title: "Machine Learning Implementation using Python",
+    link: "https://github.com/fikrianggara/Machine-learning-with-Python",
+    thumbnail: "/assets/ml-python.png",
+    stack: [
+      {
+        name: "Python",
+        icon: <IconBrandPython size={36} />,
+      },
+    ],
+    domain: ["Data Science", "Machine Learning"],
   },
   {
     title: "Expenditure Wizard",
@@ -175,10 +277,11 @@ const projects = [
         icon: <IconBrandTypescript size={36} />,
       },
     ],
+    domain: ["Web Development"],
   },
 
   {
-    title: "Platform Pemeriksaan Data Susenas Seruti",
+    title: "Platform Pemeriksaan Data Susenas - Seruti",
     link: "/",
     thumbnail: "/assets/susenas-seruti.png",
     stack: [
@@ -191,6 +294,7 @@ const projects = [
         icon: <IconBrandTailwind size={36} />,
       },
     ],
+    domain: ["Web Development", "Data Processing"],
   },
   {
     title: "Sumatera Selatan Export Data Dashboard",
@@ -202,6 +306,23 @@ const projects = [
         icon: <IconBrandTailwind size={36} />,
       },
     ],
+    domain: ["Web Development", "Data Visualization"],
+  },
+  {
+    title: "PIA - Peduli Ibu dan Anak",
+    link: "https://peduli-ibu-anak.netlify.app/ibu-anak",
+    thumbnail: "/assets/pia.png",
+    stack: [
+      {
+        name: "React",
+        icon: <IconBrandReact size={36} />,
+      },
+      {
+        name: "TailwindCss",
+        icon: <IconBrandTailwind size={36} />,
+      },
+    ],
+    domain: ["Progressive Web App", "Web Development"],
   },
 ];
 
@@ -227,21 +348,35 @@ const socialMedia = [
     icon: <IconBrandInstagram size={36} />,
   },
 ];
+
 const Page = () => {
   const [cardIndex, setCardIndex] = useState(0);
+  const ref = useRef(null);
+  const isInView = useInView(ref);
 
   const onChevronRightClick = () => {
-    setCardIndex(() => (cardIndex + 1) % projects.length);
+    if (cardIndex + 1 >= projects.length) {
+      setCardIndex(projects.length - cardIndex - 1);
+    } else {
+      setCardIndex(cardIndex + 1);
+    }
   };
   const onChevronLeftClick = () => {
-    setCardIndex(() => (cardIndex - 1) % projects.length);
+    if (cardIndex <= 0) {
+      setCardIndex(projects.length - 1);
+    } else {
+      setCardIndex(cardIndex - 1);
+    }
   };
+  // const uniqueDomain = [
+  //   ...new Set(projects.map((project) => project.domain).flat()),
+  // ];
 
   return (
     <div className="relative bg-white dark:bg-black ">
       <Navbar />
       <div id="hero">
-        <HighlightDiv className="items-start justify-center m-auto h-fit p-8 py-10 space-y-10">
+        <HighlightDiv className="items-start justify-center m-auto h-fit md:h-[100vh] p-8 py-10 space-y-10">
           <div className="space-y-6 md:space-y-8">
             <motion.div
               className="text-white text-start w-11/12 md:w-[40rem] text-lg md:text-xl lg:text-2xl leading-tight self-center space-y-6 md:space-y-8 font-thin"
@@ -250,7 +385,7 @@ const Page = () => {
                 visible: {
                   opacity: 1,
                   transition: {
-                    staggerChildren: 2,
+                    staggerChildren: 1,
                   },
                 },
               }}
@@ -290,18 +425,7 @@ const Page = () => {
                   field enumeration of statistics indonesia&apos;s surveys
                 </strong>
               </motion.p>
-              <motion.p
-                className="text-sm md:text-base lg:text-xl leading-thight md:leading-loose"
-                variants={{
-                  hidden: { opacity: 0 },
-                  visible: { opacity: 1, transition: { duration: 3 } },
-                }}
-              >
-                <strong>Nextjs</strong>, <strong>Tailwindcss</strong>, and{" "}
-                <strong>Supabase</strong> are my main tool to develop app, while{" "}
-                <strong>Python</strong> are used for data processing, analysis
-                and task automation.
-              </motion.p>
+
               <motion.p
                 className="text-sm md:text-base lg:text-xl leading-thight md:leading-loose"
                 variants={{
@@ -321,81 +445,225 @@ const Page = () => {
         id="project"
         className="flex flex-col h-fit md:m-auto md:w-[40rem] p-8 md:p-0 md:py-10 space-y-10"
       >
-        <div className="space-y-4">
-          <h2 className="text-2xl font-bold dark:text-white">My projects</h2>
-          <p className="text-sm md:text-base lg:text-xl text-white font-thin">
-            I try to solve real-world problems through my projects.
-          </p>
-        </div>
-        <motion.ul
-          className="flex flex-nowrap gap-2 md:gap-4 overflow-x-scroll"
+        <motion.div
+          className="space-y-4"
           variants={{
             hidden: { opacity: 0 },
             visible: {
               opacity: 1,
               transition: {
-                // delay: 1,
-                staggerChildren: 1,
+                // delay: 4,
+                duration: 2,
+                staggerChildren: 1.5,
               },
             },
           }}
           initial="hidden"
-          animate="visible"
-          whileInView={{ opacity: 1 }}
+          animate={isInView ? "visible" : "hidden"}
+          // whileInView={"visible"}
         >
-          {projects.map((project, idx) => {
-            return (
-              <motion.li
-                key={idx}
-                className="flex-none w-fit duration-500 ease-in-out"
-                style={{
-                  transform: `translateX(-${cardIndex * 100}%)`,
-                }}
+          <motion.h2 className="text-2xl font-bold dark:text-white">
+            My projects
+          </motion.h2>
+          <motion.p
+            className="text-sm md:text-base lg:text-xl text-white font-thin"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: { opacity: 1, transition: { duration: 2 } },
+            }}
+          >
+            I love exploring various topics and implement them into my projects.
+          </motion.p>
+          <motion.p
+            className="text-sm md:text-base lg:text-xl leading-thight text-white md:leading-loose font-thin"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: { opacity: 1, transition: { duration: 2 } },
+            }}
+          >
+            <strong>Nextjs</strong>, <strong>Tailwindcss</strong>, and{" "}
+            <strong>Supabase</strong> are my main tools to develop app, while{" "}
+            <strong>Python</strong> are used for data processing, analysis and
+            task automation.
+          </motion.p>
+          <motion.ul
+            className="flex flex-nowrap gap-2 md:gap-4 overflow-x-scroll"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  // delay: 6,
+                  // staggerChildren: 2,
+                  duration: 2,
+                },
+              },
+            }}
+            initial="hidden"
+            // animate="visible"
+            whileInView={"visible"}
+            ref={ref}
+          >
+            {projects.map((project, idx) => {
+              return (
+                <motion.li
+                  key={idx}
+                  className="flex-none w-fit duration-500 ease-in-out mt-2"
+                  style={{
+                    animationDelay: `3s`,
+                    transform: `translateX(-${cardIndex * 100}%)`,
+                    opacity: isInView ? 1 : 0,
+                    transition: `transform 0.5s ease-in-out, opacity ${idx}s ease-in-out`,
+                  }}
+                >
+                  <Link href={project.link} className="space-y-4">
+                    <Image
+                      src={project.thumbnail}
+                      width={330}
+                      height={400}
+                      alt={project.title}
+                      className="rounded-lg aspect-video object-cover object-top"
+                    />
+                    <h3 className="text-base md:text-xl text-white font-medium w-[18rem]">
+                      {project.title}
+                    </h3>
+                    <ul className="flex gap-2 flex-wrap w-fit w-[18rem]">
+                      {project.domain.map((domain, idx) => (
+                        <li key={idx} className="flex gap-2 items-center">
+                          <div className="text-xs border border-white border-[0.5px] rounded-full py-0.5 px-2 text-white font-thin">
+                            {domain}
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                    <ul className="flex gap-2 flex-wrap w-fit w-[18rem]">
+                      {project.stack.map((stack, idx) => (
+                        <li key={idx} className="flex gap-2 items-center">
+                          <div className="text-xs text-white">{stack.name}</div>
+                          {idx !== project.stack.length - 1 && (
+                            <IconPointFilled size={4} className="text-white" />
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  </Link>
+                </motion.li>
+              );
+            })}
+          </motion.ul>
+          <div className="flex flex-row items-center space-x-4 self-end justify-end">
+            <div
+              className="rounded-full w-8 h-8 flex items-center justify-center border text-white hover:text-black hover:bg-white cursor-pointer"
+              onClick={onChevronLeftClick}
+            >
+              <IconChevronLeft className="w-5 h-5 cursor-pointer" />
+            </div>
+            <div
+              className="rounded-full w-8 h-8 flex items-center justify-center border text-white hover:text-black hover:bg-white cursor-pointer"
+              onClick={onChevronRightClick}
+            >
+              <IconChevronRight className="w-6 h-6 cursor-pointer" />
+            </div>
+          </div>
+        </motion.div>
+        {/* {uniqueDomain.map((d, idx) => {
+          return (
+            <div
+              className="flex flex-col h-fit md:m-auto md:w-[40rem] p-8 md:p-0 md:py-10 space-y-10"
+              key={idx}
+            >
+              <h2 className="text-2xl font-bold dark:text-white">{d}</h2>
+              <motion.ul
+                className="flex flex-nowrap gap-2 md:gap-4 overflow-x-scroll"
                 variants={{
                   hidden: { opacity: 0 },
-                  visible: { opacity: 1, transition: { duration: 2 } },
+                  visible: {
+                    opacity: 1,
+                    transition: {
+                      // delay: 6,
+                      // staggerChildren: 2,
+                      duration: 2,
+                    },
+                  },
                 }}
+                initial="hidden"
+                // animate="visible"
+                whileInView={"visible"}
+                ref={ref}
               >
-                <Link href={project.link} className="space-y-4">
-                  <Image
-                    src={project.thumbnail}
-                    width={330}
-                    height={400}
-                    alt={project.title}
-                    className="rounded-lg aspect-video object-cover object-top"
-                  />
-                  <h3 className="text-base md:text-xl text-white font-medium w-[18rem]">
-                    {project.title}
-                  </h3>
-                  <ul className="flex gap-2 flex-wrap w-fit w-[18rem]">
-                    {project.stack.map((stack, idx) => (
-                      <li
+                {projects
+                  .filter((p) => p.domain.includes(d))
+                  .map((project, idx) => {
+                    return (
+                      <motion.li
                         key={idx}
-                        className="text-xs border border-white border-[0.5px] rounded-full py-0.5 px-2 text-white font-thin"
+                        className="flex-none w-fit duration-500 ease-in-out"
+                        style={{
+                          animationDelay: `3s`,
+                          transform: `translateX(-${cardIndex * 100}%)`,
+                          opacity: isInView ? 1 : 0,
+                          transition: `transform 0.5s ease-in-out, opacity ${
+                            idx + 3
+                          }s ease-in-out`,
+                        }}
                       >
-                        {stack.name}
-                      </li>
-                    ))}
-                  </ul>
-                </Link>
-              </motion.li>
-            );
-          })}
-        </motion.ul>
-        <div className="flex flex-row items-center space-x-4 self-end">
-          <div
-            className="rounded-full w-8 h-8 flex items-center justify-center border text-white hover:text-black hover:bg-white cursor-pointer"
-            onClick={onChevronLeftClick}
-          >
-            <IconChevronLeft className="w-5 h-5 cursor-pointer" />
-          </div>
-          <div
-            className="rounded-full w-8 h-8 flex items-center justify-center border text-white hover:text-black hover:bg-white cursor-pointer"
-            onClick={onChevronRightClick}
-          >
-            <IconChevronRight className="w-6 h-6 cursor-pointer" />
-          </div>
-        </div>
+                        <Link href={project.link} className="space-y-4">
+                          <Image
+                            src={project.thumbnail}
+                            width={330}
+                            height={400}
+                            alt={project.title}
+                            className="rounded-lg aspect-video object-cover object-top"
+                          />
+                          <h3 className="text-base md:text-xl text-white font-medium w-[18rem]">
+                            {project.title}
+                          </h3>
+                          <ul className="flex gap-2 flex-wrap w-fit w-[18rem]">
+                            {project.domain.map((domain, idx) => (
+                              <li key={idx} className="flex gap-2 items-center">
+                                <div className="text-xs border border-white border-[0.5px] rounded-full py-0.5 px-2 text-white font-thin">
+                                  {domain}
+                                </div>
+                              </li>
+                            ))}
+                          </ul>
+                          <ul className="flex gap-2 flex-wrap w-fit w-[18rem]">
+                            {project.stack.map((stack, idx) => (
+                              <li key={idx} className="flex gap-2 items-center">
+                                <div className="text-xs text-white">
+                                  {stack.name}
+                                </div>
+                                {idx !== project.stack.length - 1 && (
+                                  <IconPointFilled
+                                    size={4}
+                                    className="text-white"
+                                  />
+                                )}
+                              </li>
+                            ))}
+                          </ul>
+                        </Link>
+                      </motion.li>
+                    );
+                  })}
+              </motion.ul>
+              <div className="flex flex-row items-center space-x-4 self-end">
+                <div
+                  className="rounded-full w-8 h-8 flex items-center justify-center border text-white hover:text-black hover:bg-white cursor-pointer"
+                  onClick={onChevronLeftClick}
+                >
+                  <IconChevronLeft className="w-5 h-5 cursor-pointer" />
+                </div>
+                <div
+                  className="rounded-full w-8 h-8 flex items-center justify-center border text-white hover:text-black hover:bg-white cursor-pointer"
+                  onClick={onChevronRightClick}
+                >
+                  <IconChevronRight className="w-6 h-6 cursor-pointer" />
+                </div>
+              </div>
+            </div>
+          );
+        })} */}
       </div>
       <div
         id="contact"
