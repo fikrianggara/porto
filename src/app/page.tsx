@@ -460,8 +460,8 @@ const Page = () => {
               opacity: 1,
               transition: {
                 // delay: 4,
-                duration: 2,
-                staggerChildren: 1.5,
+                duration: 1,
+                staggerChildren: 0.5,
               },
             },
           }}
@@ -476,7 +476,7 @@ const Page = () => {
             className="text-sm md:text-base lg:text-xl text-white font-thin"
             variants={{
               hidden: { opacity: 0 },
-              visible: { opacity: 1, transition: { duration: 2 } },
+              visible: { opacity: 1, transition: { duration: 1 } },
             }}
           >
             I love exploring various topics and implement them into my projects.
@@ -485,7 +485,7 @@ const Page = () => {
             className="text-sm md:text-base lg:text-xl leading-thight text-white md:leading-loose font-thin"
             variants={{
               hidden: { opacity: 0 },
-              visible: { opacity: 1, transition: { duration: 2 } },
+              visible: { opacity: 1, transition: { duration: 1 } },
             }}
           >
             <strong>Nextjs</strong>, <strong>Tailwindcss</strong>, and{" "}
