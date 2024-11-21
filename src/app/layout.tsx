@@ -15,9 +15,9 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Fikri - Full-stack Web Developer",
+  title: "Fikri Septrian Anggara - Full-stack Web Developer",
   description:
-    "I'm a Full-stack Web Developer based in Jambi, Indonesia with interest on learning anything from Software Engineering, music, and sports.",
+    "m a Full-stack Web Developer based in Jambi, Indonesia with interest on learning anything from Software Engineering, music, and sports.",
 };
 
 export default function RootLayout({
