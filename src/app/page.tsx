@@ -144,7 +144,8 @@ const projects = [
     domain: ["Web Development"],
   },
   {
-    title: "Stock Fundamental Indicator Analysis using DBSCAN",
+    title:
+      "Stock Fundamental Indicator Analysis using Kmeans, DBSCAN, GMM algorithm",
     link: "https://github.com/fikrianggara/applied-ML-dicoding/blob/main/submission1/README.md",
     thumbnail: "/assets/stock-analysis.png",
     stack: [
