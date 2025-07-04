@@ -170,7 +170,7 @@ const projects = [
   },
   {
     title: "Microservice Impementation",
-    link: "https://github.com/fikrianggara/data-science-and-machine-learning",
+    link: "https://github.com/fikrianggara/microservice",
     thumbnail: "/assets/microservice.png",
     stack: [
       {
