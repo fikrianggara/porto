@@ -81,7 +81,7 @@ const projects = [
   },
   {
     title: "Cuecard Statistik Jambi",
-    link: "https://cuecard.bpsjambi.id",
+    link: "https://1500-statistic-indicator.vercel.app/",
     thumbnail: "/assets/cuecard.png",
     stack: [
       {
