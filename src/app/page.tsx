@@ -192,7 +192,7 @@ export default function Home() {
 
                 <dl className="divide-y divide-line">
                   {[
-                    ['Role', 'Software Engineer'],
+                    ['Role', 'Full-stack developer · System architect'],
                     [
                       'Focus',
                       'Data platforms · LLM Applications · Quant Tooling · System architecture',
