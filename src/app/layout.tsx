@@ -15,9 +15,9 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Fikri Septrian Anggara - Full-stack Web Developer",
+  title: "Fikri Septrian Anggara — Systems & Data",
   description:
-    "m a Full-stack Web Developer based in Jambi, Indonesia with interest on learning anything from Software Engineering, music, and sports.",
+    "System architect and full-stack developer in Jambi, Indonesia. Data platforms, quantitative tooling, and design systems built for real-world data.",
 };
 
 export default function RootLayout({
@@ -26,9 +26,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark scroll-smooth">
+    <html lang="en" className="scroll-smooth">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} bg-paper font-sans text-ink antialiased`}
       >
         {children}
       </body>

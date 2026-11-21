@@ -1,729 +1,455 @@
 "use client";
-import React, { useRef, useState } from "react";
-import { HighlightDiv } from "@/components/ui/hero-highlights";
-import { motion, useInView } from "framer-motion";
-import Image from "next/image";
-import Link from "next/link";
+
+import { useCallback, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import {
-  IconBrandDocker,
-  IconBrandFlutter,
+  IconArrowDown,
+  IconArrowRight,
+  IconArrowUpRight,
   IconBrandGithub,
   IconBrandInstagram,
   IconBrandLinkedin,
-  IconBrandNextjs,
-  IconBrandPython,
-  IconBrandReact,
-  IconBrandSupabase,
-  IconBrandTailwind,
-  IconBrandTypescript,
   IconBrandX,
-  IconChevronLeft,
-  IconChevronRight,
   IconMail,
-  IconPointFilled,
 } from "@tabler/icons-react";
 import Navbar from "@/components/navbar";
+import ProjectCard from "@/components/project-card";
+import ProjectModal from "@/components/project-modal";
+import {
+  archiveProjects,
+  featuredProjects,
+  projects,
+  type Project,
+} from "@/lib/projects";
 
-const projects = [
+const socials = [
   {
-    title: "PennyWise - An Expense Tracker App",
-    link: "https://pennywise.fikrianggara.dev",
-    thumbnail: "/assets/pennywise.png",
-    stack: [
-      {
-        name: "NextJS",
-        icon: <IconBrandNextjs size={36} />,
-      },
-      {
-        name: "Shadcn UI",
-        icon: (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 256 256"
-            className="h-6 w-6"
-          >
-            <rect width="256" height="256" fill="none"></rect>
-            <line
-              x1="208"
-              y1="128"
-              x2="128"
-              y2="208"
-              fill="none"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="32"
-            ></line>
-            <line
-              x1="192"
-              y1="40"
-              x2="40"
-              y2="192"
-              fill="none"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="32"
-            ></line>
-          </svg>
-        ),
-      },
-      {
-        name: "TailwindCSS",
-        icon: <IconBrandTailwind size={36} />,
-      },
-      {
-        name: "TypeScript",
-        icon: <IconBrandTypescript size={36} />,
-      },
-    ],
-    domain: ["Web Development"],
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/in/fikri-septrian-anggara/",
+    icon: IconBrandLinkedin,
   },
   {
-    title: "Cuecard Statistik Jambi",
-    link: "https://cuecard.bpsjambi.id",
-    thumbnail: "/assets/cuecard.png",
-    stack: [
-      {
-        name: "NextJS",
-        icon: <IconBrandNextjs size={36} />,
-      },
-      {
-        name: "TailwindCSS",
-        icon: <IconBrandTailwind size={36} />,
-      },
-      {
-        name: "TypeScript",
-        icon: <IconBrandTypescript size={36} />,
-      },
-      {
-        name: "Supabase",
-        icon: <IconBrandSupabase size={36} />,
-      },
-    ],
-    domain: ["Web Development"],
-  },
-  {
-    title: "SIITUNG V2 - Sistem Informasi Tungkal",
-    link: "https://siitung-bps1507.vercel.app/",
-    thumbnail: "/assets/siitung.png",
-    stack: [
-      {
-        name: "NextJS",
-        icon: <IconBrandNextjs size={36} />,
-      },
-      {
-        name: "TailwindCSS",
-        icon: <IconBrandTailwind size={36} />,
-      },
-      {
-        name: "TypeScript",
-        icon: <IconBrandTypescript size={36} />,
-      },
-    ],
-    domain: ["Web Development", "Data Visualization"],
-  },
-  {
-    title: "Konreg PDRB Sumatera 2024",
-    link: "https://konreg2024.bpsjambi.id",
-    thumbnail: "/assets/konreg.png",
-    stack: [
-      {
-        name: "NextJS",
-        icon: <IconBrandNextjs size={36} />,
-      },
-      {
-        name: "TailwindCSS",
-        icon: <IconBrandTailwind size={36} />,
-      },
-      {
-        name: "TypeScript",
-        icon: <IconBrandTypescript size={36} />,
-      },
-    ],
-    domain: ["Web Development"],
-  },
-  {
-    title:
-      "Stock Fundamental Indicator Analysis using Kmeans, DBSCAN, GMM algorithm",
-    link: "https://github.com/fikrianggara/applied-ML-dicoding/blob/main/submission1/README.md",
-    thumbnail: "/assets/stock-analysis.png",
-    stack: [
-      {
-        name: "Python",
-        icon: <IconBrandPython size={36} />,
-      },
-    ],
-    domain: ["Data Science", "Machine Learning"],
-  },
-  {
-    title: "Transjakarta Passengers Number Forecasting using SARIMAX",
-    link: "https://github.com/fikrianggara/indathon-round1-2024/blob/main/main.ipynb",
-    thumbnail: "/assets/transjakarta-passenger-forecasting.png",
-    stack: [
-      {
-        name: "Python",
-        icon: <IconBrandPython size={36} />,
-      },
-    ],
-    domain: ["Data Science"],
-  },
-  {
-    title: "Microservice Impementation",
-    link: "https://github.com/fikrianggara/microservice",
-    thumbnail: "/assets/microservice.png",
-    stack: [
-      {
-        name: "Docker",
-        icon: <IconBrandDocker size={36} />,
-      },
-      {
-        name: "Kubernetes",
-        icon: <IconBrandDocker size={36} />,
-      },
-      {
-        name: "Istio",
-        icon: <IconBrandDocker size={36} />,
-      },
-    ],
-    domain: ["Distributed System"],
-  },
-  {
-    title: "Airbnb Clone",
-    link: "https://github.com/fikrianggara/flutter-airbnb-clone",
-    thumbnail: "/assets/airbnb.png",
-    stack: [
-      {
-        name: "Flutter",
-        icon: <IconBrandFlutter size={36} />,
-      },
-    ],
-    domain: ["Mobile Development"],
-  },
-  {
-    title: "SIMOSI - Sistem Monitorin Survei",
-    link: "https://simosi.vercel.app/",
-    thumbnail: "/assets/simosi.png",
-    stack: [
-      {
-        name: "NextJS",
-        icon: <IconBrandNextjs size={36} />,
-      },
-      {
-        name: "TailwindCSS",
-        icon: <IconBrandTailwind size={36} />,
-      },
-      {
-        name: "TypeScript",
-        icon: <IconBrandTypescript size={36} />,
-      },
-      {
-        name: "Supabase",
-        icon: <IconBrandSupabase size={36} />,
-      },
-    ],
-    domain: ["Web Development"],
-  },
-  {
-    title: "Machine Learning Implementation with R",
-    link: "https://github.com/fikrianggara/machine-learning-algorithm-with-R",
-    thumbnail: "/assets/ml-r.png",
-    stack: [
-      {
-        name: "R",
-        icon: <IconBrandPython size={36} />,
-      },
-    ],
-    domain: ["Data Science", "Machine Learning"],
-  },
-
-  {
-    title: "Multivariate Analysis using R",
-    link: "https://github.com/fikrianggara/Multivariate-Analysis-on-R",
-    thumbnail: "/assets/multivariate-r.png",
-    stack: [
-      {
-        name: "R",
-        icon: <IconBrandPython size={36} />,
-      },
-    ],
-    domain: ["Data Analysis", "Statistics"],
-  },
-  {
-    title: "Machine Learning Implementation using Python",
-    link: "https://github.com/fikrianggara/Machine-learning-with-Python",
-    thumbnail: "/assets/ml-python.png",
-    stack: [
-      {
-        name: "Python",
-        icon: <IconBrandPython size={36} />,
-      },
-    ],
-    domain: ["Data Science", "Machine Learning"],
-  },
-  {
-    title: "Expenditure Wizard",
-    link: "https://expenditure-wizard.vercel.app/",
-    thumbnail: "/assets/expenditure-wizard.png",
-    stack: [
-      {
-        name: "NextJS",
-        icon: <IconBrandNextjs size={36} />,
-      },
-      {
-        name: "TailwindCSS",
-        icon: <IconBrandTailwind size={36} />,
-      },
-      {
-        name: "TypeScript",
-        icon: <IconBrandTypescript size={36} />,
-      },
-    ],
-    domain: ["Web Development"],
-  },
-
-  {
-    title: "Platform Pemeriksaan Data Susenas - Seruti",
-    link: "/",
-    thumbnail: "/assets/susenas-seruti.png",
-    stack: [
-      {
-        name: "Python",
-        icon: <IconBrandPython size={36} />,
-      },
-      {
-        name: "Streamlit",
-        icon: <IconBrandTailwind size={36} />,
-      },
-    ],
-    domain: ["Web Development", "Data Processing"],
-  },
-  {
-    title: "Sumatera Selatan Export Data Dashboard",
-    link: "https://fikrianggara26.shinyapps.io/Export-Sumatera_Selatan-2020-Fikri_septrian_anggara-221810306/",
-    thumbnail: "/assets/export-sumsel.png",
-    stack: [
-      {
-        name: "R Shiny",
-        icon: <IconBrandTailwind size={36} />,
-      },
-    ],
-    domain: ["Web Development", "Data Visualization"],
-  },
-  {
-    title: "PIA - Peduli Ibu dan Anak",
-    link: "https://peduli-ibu-anak.netlify.app/ibu-anak",
-    thumbnail: "/assets/pia.png",
-    stack: [
-      {
-        name: "React",
-        icon: <IconBrandReact size={36} />,
-      },
-      {
-        name: "TailwindCss",
-        icon: <IconBrandTailwind size={36} />,
-      },
-    ],
-    domain: ["Progressive Web App", "Web Development"],
-  },
-];
-
-const socialMedia = [
-  {
-    name: "Linkedin",
-    link: "https://www.linkedin.com/in/fikri-septrian-anggara/",
-    icon: <IconBrandLinkedin size={24} />,
+    name: "GitHub",
+    href: "https://github.com/fikrianggara",
+    icon: IconBrandGithub,
   },
   {
     name: "Email",
-    link: "mailto:dev.fikrianggara@gmail.com",
-    icon: <IconMail size={24} />,
+    href: "mailto:dev.fikrianggara@gmail.com",
+    icon: IconMail,
   },
-  {
-    name: "Github",
-    link: "https://github.com/fikrianggara",
-    icon: <IconBrandGithub size={24} />,
-  },
-
   {
     name: "X",
-    link: "https://x.com/dobequalnsd",
-    icon: <IconBrandX size={24} />,
+    href: "https://x.com/dobequalnsd",
+    icon: IconBrandX,
   },
   {
     name: "Instagram",
-    link: "https://instagram.com/fikrianggara",
-    icon: <IconBrandInstagram size={24} />,
+    href: "https://instagram.com/fikrianggara",
+    icon: IconBrandInstagram,
   },
 ];
 
-const Page = () => {
-  const [cardIndex, setCardIndex] = useState(0);
-  const ref = useRef(null);
-  const isInView = useInView(ref);
+const tickerItems = [
+  "System architecture",
+  "Data platforms",
+  "Quantitative tooling",
+  "Design systems",
+  "Next.js",
+  "FastAPI",
+  "PostgreSQL",
+  "TypeScript",
+  "Python",
+  "Knowledge graphs",
+];
 
-  const onChevronRightClick = () => {
-    if (cardIndex + 1 >= projects.length) {
-      setCardIndex(projects.length - cardIndex - 1);
-    } else {
-      setCardIndex(cardIndex + 1);
-    }
-  };
-  const onChevronLeftClick = () => {
-    if (cardIndex <= 0) {
-      setCardIndex(projects.length - 1);
-    } else {
-      setCardIndex(cardIndex - 1);
-    }
-  };
-  // const uniqueDomain = [
-  //   ...new Set(projects.map((project) => project.domain).flat()),
-  // ];
+const capabilities = [
+  {
+    title: "System architecture",
+    copy: "Domain models, boundaries, and trade-offs before code. I map the data flow first, then choose the smallest system that holds.",
+  },
+  {
+    title: "Data engineering",
+    copy: "PostgreSQL, pipelines, and knowledge graphs. Correct aggregation and SQL guardrails matter more than a chat interface in front of them.",
+  },
+  {
+    title: "Product engineering",
+    copy: "End-to-end delivery with Next.js, React, and FastAPI: interface, API, persistence, and the deployment path in one piece.",
+  },
+  {
+    title: "Statistical work",
+    copy: "Survey data and official BPS figures. Analysis, forecasting, and tools that keep the definitions of the source data intact.",
+  },
+];
+
+const featuredSpans = [
+  "lg:col-span-7",
+  "lg:col-span-5",
+  "lg:col-span-5",
+  "lg:col-span-7",
+];
+
+export default function Home() {
+  const [selected, setSelected] = useState<Project | null>(null);
+  const closeModal = useCallback(() => setSelected(null), []);
 
   return (
-    <div className="relative bg-white dark:bg-black ">
+    <div className="relative bg-paper">
       <Navbar />
-      <div id="hero">
-        <HighlightDiv className="items-start justify-center m-auto h-fit md:h-[100vh] p-8 py-10 space-y-10">
-          <div className="space-y-6 md:space-y-8">
-            <motion.div
-              className="text-white text-start w-11/12 md:w-[40rem] text-lg md:text-xl lg:text-2xl leading-tight self-center space-y-6 md:space-y-8 font-thin"
-              variants={{
-                hidden: { opacity: 0 },
-                visible: {
-                  opacity: 1,
-                  transition: {
-                    staggerChildren: 1,
-                  },
-                },
-              }}
-              initial="hidden"
-              animate="visible"
-            >
-              <motion.h1
-                className="text-4xl lg:text-7xl font-bold dark:text-white"
-                variants={{
-                  hidden: { opacity: 0 },
-                  visible: { opacity: 1, transition: { duration: 1 } },
-                }}
-              >
-                Hi, I&lsquo;m Fikri
-              </motion.h1>
-              <motion.p
-                className="text-sm md:text-base lg:text-xl leading-thight md:leading-loose"
-                variants={{
-                  hidden: { opacity: 0 },
-                  visible: { opacity: 1, transition: { duration: 1 } },
-                }}
-              >
-                I&apos;m a <strong>Web Developer</strong> by hobby with 2 years
-                of experience building web apps, based in Jambi, Indonesia.
-                Currently, I work as Civil Servant at Statistics Indonesia.
-              </motion.p>
-              <motion.p
-                className="text-sm md:text-base lg:text-xl leading-thight md:leading-loose"
-                variants={{
-                  hidden: { opacity: 0 },
-                  visible: { opacity: 1, transition: { duration: 1 } },
-                }}
-              >
-                I use my knowledge to tackle business problems varying from{" "}
-                <strong>
-                  data processing, analysis, app development, IT support and
-                  field enumeration of statistics indonesia&apos;s surveys
-                </strong>
-              </motion.p>
 
-              <motion.p
-                className="text-sm md:text-base lg:text-xl leading-thight md:leading-loose"
-                variants={{
-                  hidden: { opacity: 0 },
-                  visible: { opacity: 1, transition: { duration: 1 } },
-                }}
-              >
-                I also love music and sports and enjoy spending my free time
-                learning these stuffs.
-              </motion.p>
-            </motion.div>
-          </div>
-        </HighlightDiv>
-      </div>
+      <main id="top">
+        <section className="relative overflow-hidden border-b border-line pt-28 md:pt-36">
+          <div
+            aria-hidden="true"
+            className="grid-paper absolute inset-0 opacity-70 [mask-image:linear-gradient(to_bottom,black,transparent_92%)]"
+          />
+          <div className="relative mx-auto w-full max-w-[1240px] px-6 md:px-10">
+            <div className="flex items-center justify-between border-b border-line pb-4">
+              <p className="label">Portfolio — 2026</p>
+              <p className="label hidden sm:block">Jambi, Indonesia · UTC+7</p>
+            </div>
 
-      <div
-        id="project"
-        className="flex flex-col h-fit md:m-auto md:w-[40rem] p-8 md:p-0 md:py-10 space-y-10"
-      >
-        <motion.div
-          className="space-y-4"
-          variants={{
-            hidden: { opacity: 0 },
-            visible: {
-              opacity: 1,
-              transition: {
-                // delay: 4,
-                duration: 1,
-                staggerChildren: 0.5,
-              },
-            },
-          }}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          // whileInView={"visible"}
-        >
-          <motion.h2 className="text-2xl font-bold dark:text-white">
-            My projects
-          </motion.h2>
-          <motion.p
-            className="text-sm md:text-base lg:text-xl text-white font-thin"
-            variants={{
-              hidden: { opacity: 0 },
-              visible: { opacity: 1, transition: { duration: 1 } },
-            }}
-          >
-            I love exploring various topics and implement them into my projects.
-          </motion.p>
-          <motion.p
-            className="text-sm md:text-base lg:text-xl leading-thight text-white md:leading-loose font-thin"
-            variants={{
-              hidden: { opacity: 0 },
-              visible: { opacity: 1, transition: { duration: 1 } },
-            }}
-          >
-            <strong>Nextjs</strong>, <strong>Tailwindcss</strong>, and{" "}
-            <strong>Supabase</strong> are my main tools to develop app, while{" "}
-            <strong>Python</strong> are used for data processing, analysis and
-            task automation.
-          </motion.p>
-          <motion.ul
-            className="flex flex-nowrap gap-2 md:gap-4 overflow-x-scroll"
-            variants={{
-              hidden: { opacity: 0 },
-              visible: {
-                opacity: 1,
-                transition: {
-                  // delay: 6,
-                  // staggerChildren: 2,
-                  duration: 2,
-                },
-              },
-            }}
-            initial="hidden"
-            // animate="visible"
-            whileInView={"visible"}
-            ref={ref}
-          >
-            {projects.map((project, idx) => {
-              return (
-                <motion.li
-                  key={idx}
-                  className="flex-none w-fit duration-500 ease-in-out mt-2"
-                  style={{
-                    animationDelay: `3s`,
-                    transform: `translateX(-${cardIndex * 100}%)`,
-                    opacity: isInView ? 1 : 0,
-                    transition: `transform 0.5s ease-in-out, opacity ${idx}s ease-in-out`,
-                  }}
+            <div className="grid gap-12 py-12 md:py-16 lg:grid-cols-12 lg:gap-8">
+              <div className="lg:col-span-8">
+                <motion.h1
+                  initial={{ opacity: 0, y: 18 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                  className="text-[clamp(3.1rem,7.6vw,6.8rem)] font-medium leading-[0.88] tracking-[-0.055em]"
                 >
-                  <Link href={project.link} className="space-y-4">
-                    <Image
-                      src={project.thumbnail}
-                      width={330}
-                      height={400}
-                      alt={project.title}
-                      className="rounded-lg aspect-video object-cover object-top"
+                  Systems for
+                  <br />
+                  <span className="text-muted">real-world</span>
+                  <br />
+                  <span className="relative inline-block">
+                    data.
+                    <span
+                      aria-hidden="true"
+                      className="absolute bottom-[0.08em] left-0 h-[0.06em] w-full bg-accent"
                     />
-                    <h3 className="text-base md:text-xl text-white font-medium w-[18rem]">
-                      {project.title}
-                    </h3>
-                    <ul className="flex gap-2 flex-wrap w-fit w-[18rem]">
-                      {project.domain.map((domain, idx) => (
-                        <li key={idx} className="flex gap-2 items-center">
-                          <div className="text-xs border border-white border-[0.5px] rounded-full py-0.5 px-2 text-white font-thin">
-                            {domain}
-                          </div>
-                        </li>
-                      ))}
-                    </ul>
-                    <ul className="flex gap-2 flex-wrap w-fit w-[18rem]">
-                      {project.stack.map((stack, idx) => (
-                        <li key={idx} className="flex gap-2 items-center">
-                          <div className="text-xs text-white">{stack.name}</div>
-                          {idx !== project.stack.length - 1 && (
-                            <IconPointFilled size={4} className="text-white" />
-                          )}
-                        </li>
-                      ))}
-                    </ul>
-                  </Link>
-                </motion.li>
-              );
-            })}
-          </motion.ul>
-          <div className="flex flex-row items-center space-x-4 self-end justify-end">
-            <div
-              className="rounded-full w-8 h-8 flex items-center justify-center border text-white hover:text-black hover:bg-white cursor-pointer"
-              onClick={onChevronLeftClick}
-            >
-              <IconChevronLeft className="w-5 h-5 cursor-pointer" />
-            </div>
-            <div
-              className="rounded-full w-8 h-8 flex items-center justify-center border text-white hover:text-black hover:bg-white cursor-pointer"
-              onClick={onChevronRightClick}
-            >
-              <IconChevronRight className="w-6 h-6 cursor-pointer" />
+                  </span>
+                </motion.h1>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.8,
+                    delay: 0.15,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
+                  className="mt-8 grid gap-8 md:grid-cols-[1fr_auto] md:items-end"
+                >
+                  <p className="max-w-[52ch] text-[15px] leading-relaxed text-muted md:text-base">
+                    I&rsquo;m Fikri Septrian Anggara — a system architect and
+                    full-stack developer at Statistics Indonesia. I build data
+                    platforms, quantitative tools, and design systems for work
+                    where the numbers have to hold up.
+                  </p>
+
+                  <div className="flex flex-wrap items-center gap-3">
+                    <a
+                      href="#work"
+                      className="group flex items-center gap-2 bg-ink px-5 py-3 text-[13px] text-paper transition-colors hover:bg-accent"
+                    >
+                      Selected work
+                      <IconArrowDown
+                        size={15}
+                        className="transition-transform group-hover:translate-y-0.5"
+                      />
+                    </a>
+                    <a
+                      href="#about"
+                      className="group flex items-center gap-2 border border-line bg-paper px-5 py-3 text-[13px] transition-colors hover:border-ink"
+                    >
+                      About
+                      <IconArrowRight
+                        size={15}
+                        className="transition-transform group-hover:translate-x-0.5"
+                      />
+                    </a>
+                  </div>
+                </motion.div>
+              </div>
+
+              <motion.aside
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.8,
+                  delay: 0.25,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                className="self-end border border-line bg-surface/80 backdrop-blur lg:col-span-4"
+              >
+                <div className="flex items-center justify-between border-b border-line px-5 py-3">
+                  <p className="label">Currently</p>
+                  <span className="flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-[0.14em] text-muted">
+                    <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+                    Based in Jambi
+                  </span>
+                </div>
+
+                <dl className="divide-y divide-line">
+                  {[
+                    ["Role", "Statistics Indonesia (BPS)"],
+                    ["Focus", "Data platforms · quant tooling"],
+                    ["Stack", "TypeScript · Python · SQL"],
+                  ].map(([term, value]) => (
+                    <div key={term} className="grid grid-cols-[70px_1fr] gap-4 px-5 py-3.5">
+                      <dt className="label pt-0.5">{term}</dt>
+                      <dd className="text-[13px] leading-snug">{value}</dd>
+                    </div>
+                  ))}
+                </dl>
+
+                <div className="border-t border-line px-5 py-4">
+                  <div className="flex items-end justify-between">
+                    <div>
+                      <p className="font-mono text-3xl leading-none tracking-[-0.04em]">
+                        {String(projects.length).padStart(2, "0")}
+                      </p>
+                      <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.16em] text-muted">
+                        Projects on file
+                      </p>
+                    </div>
+                    <p className="max-w-[14ch] text-right text-[10px] leading-relaxed text-muted">
+                      Private builds are marked in each case study.
+                    </p>
+                  </div>
+                </div>
+              </motion.aside>
             </div>
           </div>
-        </motion.div>
-        {/* {uniqueDomain.map((d, idx) => {
-          return (
-            <div
-              className="flex flex-col h-fit md:m-auto md:w-[40rem] p-8 md:p-0 md:py-10 space-y-10"
-              key={idx}
-            >
-              <h2 className="text-2xl font-bold dark:text-white">{d}</h2>
-              <motion.ul
-                className="flex flex-nowrap gap-2 md:gap-4 overflow-x-scroll"
-                variants={{
-                  hidden: { opacity: 0 },
-                  visible: {
-                    opacity: 1,
-                    transition: {
-                      // delay: 6,
-                      // staggerChildren: 2,
-                      duration: 2,
-                    },
-                  },
-                }}
-                initial="hidden"
-                // animate="visible"
-                whileInView={"visible"}
-                ref={ref}
-              >
-                {projects
-                  .filter((p) => p.domain.includes(d))
-                  .map((project, idx) => {
-                    return (
-                      <motion.li
-                        key={idx}
-                        className="flex-none w-fit duration-500 ease-in-out"
-                        style={{
-                          animationDelay: `3s`,
-                          transform: `translateX(-${cardIndex * 100}%)`,
-                          opacity: isInView ? 1 : 0,
-                          transition: `transform 0.5s ease-in-out, opacity ${
-                            idx + 3
-                          }s ease-in-out`,
-                        }}
-                      >
-                        <Link href={project.link} className="space-y-4">
-                          <Image
-                            src={project.thumbnail}
-                            width={330}
-                            height={400}
-                            alt={project.title}
-                            className="rounded-lg aspect-video object-cover object-top"
-                          />
-                          <h3 className="text-base md:text-xl text-white font-medium w-[18rem]">
-                            {project.title}
-                          </h3>
-                          <ul className="flex gap-2 flex-wrap w-fit w-[18rem]">
-                            {project.domain.map((domain, idx) => (
-                              <li key={idx} className="flex gap-2 items-center">
-                                <div className="text-xs border border-white border-[0.5px] rounded-full py-0.5 px-2 text-white font-thin">
-                                  {domain}
-                                </div>
-                              </li>
-                            ))}
-                          </ul>
-                          <ul className="flex gap-2 flex-wrap w-fit w-[18rem]">
-                            {project.stack.map((stack, idx) => (
-                              <li key={idx} className="flex gap-2 items-center">
-                                <div className="text-xs text-white">
-                                  {stack.name}
-                                </div>
-                                {idx !== project.stack.length - 1 && (
-                                  <IconPointFilled
-                                    size={4}
-                                    className="text-white"
-                                  />
-                                )}
-                              </li>
-                            ))}
-                          </ul>
-                        </Link>
-                      </motion.li>
-                    );
-                  })}
-              </motion.ul>
-              <div className="flex flex-row items-center space-x-4 self-end">
+
+          <div className="relative border-t border-line bg-paper/60 py-3">
+            <div className="flex w-max animate-marquee items-center gap-8 hover:[animation-play-state:paused]">
+              {[0, 1].map((copy) => (
                 <div
-                  className="rounded-full w-8 h-8 flex items-center justify-center border text-white hover:text-black hover:bg-white cursor-pointer"
-                  onClick={onChevronLeftClick}
+                  key={copy}
+                  aria-hidden={copy === 1}
+                  className="flex items-center gap-8 pr-8"
                 >
-                  <IconChevronLeft className="w-5 h-5 cursor-pointer" />
+                  {tickerItems.map((item) => (
+                    <span
+                      key={item}
+                      className="flex items-center gap-8 whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.18em] text-muted"
+                    >
+                      {item}
+                      <span className="h-1 w-1 bg-accent" />
+                    </span>
+                  ))}
                 </div>
-                <div
-                  className="rounded-full w-8 h-8 flex items-center justify-center border text-white hover:text-black hover:bg-white cursor-pointer"
-                  onClick={onChevronRightClick}
-                >
-                  <IconChevronRight className="w-6 h-6 cursor-pointer" />
-                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="work"
+          className="mx-auto w-full max-w-[1240px] scroll-mt-20 px-6 py-20 md:px-10 md:py-28"
+        >
+          <div className="flex flex-col justify-between gap-6 border-b border-line pb-8 md:flex-row md:items-end">
+            <div>
+              <p className="label">01 — Selected work</p>
+              <h2 className="mt-4 max-w-[18ch] text-3xl font-medium leading-[1.02] tracking-[-0.04em] md:text-5xl">
+                Four systems, built end to end.
+              </h2>
+            </div>
+            <p className="max-w-[38ch] text-sm leading-relaxed text-muted md:text-right">
+              Each one started as a messy process: an exchange to read, a
+              question to answer, a design language to keep consistent. Click a
+              project for the detail.
+            </p>
+          </div>
+
+          <div className="mt-8 grid gap-4 lg:grid-cols-12">
+            {featuredProjects.map((project, index) => (
+              <ProjectCard
+                key={project.slug}
+                project={project}
+                index={String(index + 1).padStart(2, "0")}
+                onOpen={setSelected}
+                className={featuredSpans[index]}
+              />
+            ))}
+          </div>
+        </section>
+
+        <section id="archive" className="scroll-mt-20 border-y border-line bg-surface">
+          <div className="mx-auto w-full max-w-[1240px] px-6 py-20 md:px-10 md:py-24">
+            <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+              <div>
+                <p className="label">02 — Archive</p>
+                <h2 className="mt-4 text-3xl font-medium tracking-[-0.04em] md:text-4xl">
+                  Everything else.
+                </h2>
+              </div>
+              <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted">
+                {String(archiveProjects.length).padStart(2, "0")} projects ·
+                selected archive
+              </p>
+            </div>
+
+            <ul className="mt-8 border-t border-line">
+              {archiveProjects.map((project, index) => (
+                <li key={project.slug} className="border-b border-line">
+                  <button
+                    type="button"
+                    onClick={() => setSelected(project)}
+                    className="group grid w-full grid-cols-[2rem_1fr_1.25rem] items-center gap-4 py-4 text-left transition-colors hover:bg-paper md:grid-cols-[2.5rem_1fr_15rem_1.5rem] md:px-2"
+                  >
+                    <span className="font-mono text-[10px] text-muted">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span className="min-w-0">
+                      <span className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                        <span className="text-[15px] font-medium tracking-tight transition-colors group-hover:text-accent">
+                          {project.title}
+                        </span>
+                        <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-muted">
+                          {project.category}
+                        </span>
+                      </span>
+                      <span className="mt-0.5 block truncate text-[12px] text-muted">
+                        {project.summary}
+                      </span>
+                    </span>
+                    <span className="hidden truncate font-mono text-[10px] text-muted md:block">
+                      {project.stack.slice(0, 3).join(" · ")}
+                    </span>
+                    <IconArrowUpRight
+                      size={15}
+                      className="justify-self-end text-muted transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent"
+                    />
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        <section
+          id="about"
+          className="mx-auto w-full max-w-[1240px] scroll-mt-20 px-6 py-20 md:px-10 md:py-28"
+        >
+          <div className="grid gap-12 lg:grid-cols-12">
+            <div className="lg:col-span-4">
+              <p className="label">03 — About</p>
+              <h2 className="mt-4 text-3xl font-medium leading-[1.05] tracking-[-0.04em] md:text-4xl">
+                The interface is the last mile. The data model is the work.
+              </h2>
+              <div className="mt-8 hidden h-px w-full bg-line lg:block" />
+              <p className="mt-6 max-w-[30ch] font-mono text-[10px] uppercase leading-relaxed tracking-[0.14em] text-muted">
+                System architect · full-stack developer · statistics
+              </p>
+            </div>
+
+            <div className="space-y-10 lg:col-span-8">
+              <div className="space-y-5 text-[15px] leading-relaxed text-muted">
+                <p>
+                  I work at the point where statistics, data infrastructure, and
+                  product design meet. At Statistics Indonesia, that means
+                  internal tools that make survey data easier to check, publish,
+                  and question. Outside it, it means terminals, search systems,
+                  and developer tools built to be used rather than demoed.
+                </p>
+                <p>
+                  I care about clear boundaries: what a system owns, what it
+                  delegates, and how it fails. Before writing a feature I want
+                  the data flow, the failure modes, and the trade-off on the
+                  table. Then I build the smallest version that survives contact
+                  with real data.
+                </p>
+              </div>
+
+              <div className="grid border-l border-t border-line sm:grid-cols-2">
+                {capabilities.map((capability, index) => (
+                  <div
+                    key={capability.title}
+                    className="border-b border-r border-line bg-surface p-5"
+                  >
+                    <p className="font-mono text-[9px] text-accent">
+                      {String(index + 1).padStart(2, "0")}
+                    </p>
+                    <h3 className="mt-3 text-sm font-medium tracking-tight">
+                      {capability.title}
+                    </h3>
+                    <p className="mt-2 text-[12px] leading-relaxed text-muted">
+                      {capability.copy}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
-          );
-        })} */}
-      </div>
-      <div
-        id="contact"
-        className="h-[30rem] w-full dark:bg-black bg-white  dark:bg-grid-white/[0.2] bg-grid-black/[0.2] relative flex flex-col items-center justify-center space-y-36"
-      >
-        {/* Radial gradient for the container to give a faded look */}
-        <div className="absolute pointer-events-none inset-0 flex dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
-        <h2 className="text-2xl md:text-4xl font-bold dark:text-white">
-          Get in touch
-        </h2>
+          </div>
+        </section>
 
-        <motion.ul
-          initial="hidden"
-          whileInView="visible"
-          variants={{
-            visible: {
-              opacity: 1,
-              transition: {
-                // delay: 6,
-                staggerChildren: 0.25,
-                duration: 2,
-              },
-            },
-            hidden: { opacity: 0 },
-          }}
-          className="w-1/2 md:w-[20rem] flex flex-row m-auto justify-center md:justify-between md:items-center space-x-4"
+        <section
+          id="contact"
+          className="relative scroll-mt-20 overflow-hidden bg-ink text-paper"
         >
-          {socialMedia.map((social, idx) => {
-            return (
-              <motion.li
-                key={idx}
-                // initial="hidden"
-                // whileInView="visible"
-                variants={{
-                  hidden: { opacity: 0 },
-                  visible: { opacity: 1, transition: { duration: 1 } },
-                }}
-              >
-                <Link
-                  href={social.link}
-                  className="text-white flex space-x-4 items-center"
+          <div aria-hidden="true" className="grid-ink absolute inset-0 opacity-60" />
+          <div className="relative mx-auto w-full max-w-[1240px] px-6 py-20 md:px-10 md:py-28">
+            <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-paper/50">
+              04 — Contact
+            </p>
+
+            <div className="mt-8 grid gap-12 lg:grid-cols-12">
+              <div className="lg:col-span-8">
+                <h2 className="max-w-[16ch] text-4xl font-medium leading-[0.98] tracking-[-0.045em] md:text-6xl">
+                  Let&rsquo;s make the system{" "}
+                  <span className="text-accent">legible.</span>
+                </h2>
+                <a
+                  href="mailto:dev.fikrianggara@gmail.com"
+                  className="group mt-10 inline-flex items-baseline gap-3 border-b border-paper/25 pb-2 text-lg transition-colors hover:border-accent hover:text-accent md:text-2xl"
                 >
-                  {social.icon}
-                  {/* <div className="text-sm md:text-xl">{social.name}</div> */}
-                </Link>
-              </motion.li>
-            );
-          })}
-        </motion.ul>
-      </div>
+                  dev.fikrianggara@gmail.com
+                  <IconArrowUpRight
+                    size={20}
+                    className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                  />
+                </a>
+              </div>
+
+              <div className="lg:col-span-4 lg:justify-self-end">
+                <p className="max-w-[30ch] text-sm leading-relaxed text-paper/60">
+                  For data platforms, internal tools, or a second pair of eyes
+                  on an architecture decision.
+                </p>
+                <ul className="mt-6 flex gap-2">
+                  {socials.map((social) => {
+                    const Icon = social.icon;
+                    return (
+                      <li key={social.name}>
+                        <a
+                          href={social.href}
+                          target={social.href.startsWith("mailto:") ? undefined : "_blank"}
+                          rel="noreferrer"
+                          aria-label={social.name}
+                          className="grid h-10 w-10 place-items-center border border-paper/20 text-paper/70 transition-colors hover:border-accent hover:bg-accent hover:text-white"
+                        >
+                          <Icon size={17} />
+                        </a>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            </div>
+
+            <div className="mt-16 flex flex-col justify-between gap-3 border-t border-paper/15 pt-6 font-mono text-[9px] uppercase tracking-[0.16em] text-paper/40 sm:flex-row">
+              <p>© 2026 Fikri Septrian Anggara</p>
+              <p>Jambi, Indonesia · Last updated Nov 2026</p>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <AnimatePresence>
+        {selected && <ProjectModal project={selected} onClose={closeModal} />}
+      </AnimatePresence>
     </div>
   );
-};
-
-export default Page;
+}

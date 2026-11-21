@@ -2,10 +2,71 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  -ms-overflow-style: none; /* Internet Explorer 10+ */
-  scrollbar-width: none;
+:root {
+  color-scheme: light;
 }
-*::-webkit-scrollbar {
-  display: none; /* Safari and Chrome */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #f2efe8;
+  color: #15140f;
+  font-feature-settings: "ss01" 1, "cv01" 1;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: #ff4d00;
+  color: #fff7f2;
+}
+
+/* Thin rules and labels share one mono voice. */
+.label {
+  @apply font-mono text-[11px] uppercase tracking-[0.16em] text-muted;
+}
+
+.hairline {
+  @apply border-line;
+}
+
+/* Paper grid used behind the hero and the contact block. */
+.grid-paper {
+  background-image:
+    linear-gradient(to right, rgba(21, 20, 15, 0.055) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(21, 20, 15, 0.055) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+
+.grid-ink {
+  background-image:
+    linear-gradient(to right, rgba(242, 239, 232, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(242, 239, 232, 0.08) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+
+/* Modal scroll area keeps a slim, quiet scrollbar. */
+.thin-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #c3bcac transparent;
+}
+
+.thin-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.thin-scroll::-webkit-scrollbar-thumb {
+  background: #c3bcac;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-marquee,
+  .animate-fade-up {
+    animation: none !important;
+  }
 }
