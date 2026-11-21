@@ -106,7 +106,9 @@ export default function Home() {
           <div className="relative mx-auto w-full max-w-[1240px] px-6 md:px-10">
             <div className="flex items-center justify-between border-b border-line pb-4">
               <p className="label">Portfolio — 2026</p>
-              <p className="label hidden sm:block">Jambi, Indonesia · UTC+7</p>
+              <p className="label hidden sm:block">
+                Jakarta, Indonesia · UTC+7
+              </p>
             </div>
 
             <div className="grid gap-12 py-12 md:py-16 lg:grid-cols-12 lg:gap-8">
@@ -457,7 +459,7 @@ export default function Home() {
 
             <div className="mt-16 flex flex-col justify-between gap-3 border-t border-paper/15 pt-6 font-mono text-[9px] uppercase tracking-[0.16em] text-paper/40 sm:flex-row">
               <p>© 2026 Fikri Septrian Anggara</p>
-              <p>Jambi, Indonesia · Last updated Nov 2026</p>
+              <p>Indonesia · Last updated Nov 2026</p>
             </div>
           </div>
         </section>
