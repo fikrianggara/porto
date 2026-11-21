@@ -125,7 +125,7 @@ export default function Home() {
                     data.
                     <span
                       aria-hidden="true"
-                      className="absolute bottom-[0.08em] left-0 h-[0.06em] w-full bg-accent"
+                      className="absolute bottom-[-0.04em] left-0 h-[0.06em] w-full bg-accent"
                     />
                   </span>
                 </motion.h1>
