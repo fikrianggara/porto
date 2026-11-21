@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { useCallback, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { useCallback, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import {
   IconArrowDown,
   IconArrowRight,
@@ -11,82 +11,82 @@ import {
   IconBrandLinkedin,
   IconBrandX,
   IconMail,
-} from "@tabler/icons-react";
-import Navbar from "@/components/navbar";
-import ProjectCard from "@/components/project-card";
-import ProjectModal from "@/components/project-modal";
+} from '@tabler/icons-react';
+import Navbar from '@/components/navbar';
+import ProjectCard from '@/components/project-card';
+import ProjectModal from '@/components/project-modal';
 import {
   archiveProjects,
   featuredProjects,
   projects,
   type Project,
-} from "@/lib/projects";
+} from '@/lib/projects';
 
 const socials = [
   {
-    name: "LinkedIn",
-    href: "https://www.linkedin.com/in/fikri-septrian-anggara/",
+    name: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/fikri-septrian-anggara/',
     icon: IconBrandLinkedin,
   },
   {
-    name: "GitHub",
-    href: "https://github.com/fikrianggara",
+    name: 'GitHub',
+    href: 'https://github.com/fikrianggara',
     icon: IconBrandGithub,
   },
   {
-    name: "Email",
-    href: "mailto:dev.fikrianggara@gmail.com",
+    name: 'Email',
+    href: 'mailto:dev.fikrianggara@gmail.com',
     icon: IconMail,
   },
   {
-    name: "X",
-    href: "https://x.com/dobequalnsd",
+    name: 'X',
+    href: 'https://x.com/dobequalnsd',
     icon: IconBrandX,
   },
   {
-    name: "Instagram",
-    href: "https://instagram.com/fikrianggara",
+    name: 'Instagram',
+    href: 'https://instagram.com/fikrianggara',
     icon: IconBrandInstagram,
   },
 ];
 
 const tickerItems = [
-  "System architecture",
-  "Data platforms",
-  "Quantitative tooling",
-  "Design systems",
-  "Next.js",
-  "FastAPI",
-  "PostgreSQL",
-  "TypeScript",
-  "Python",
-  "Knowledge graphs",
+  'System architecture',
+  'Data platforms',
+  'Quantitative tooling',
+  'Design systems',
+  'Next.js',
+  'FastAPI',
+  'PostgreSQL',
+  'TypeScript',
+  'Python',
+  'Knowledge graphs',
 ];
 
 const capabilities = [
   {
-    title: "System architecture",
-    copy: "Domain models, boundaries, and trade-offs before code. I map the data flow first, then choose the smallest system that holds.",
+    title: 'System architecture',
+    copy: 'Domain models, boundaries, and trade-offs before code. I map the data flow first, then choose the smallest system that holds.',
   },
   {
-    title: "Data engineering",
-    copy: "PostgreSQL, pipelines, and knowledge graphs. Correct aggregation and SQL guardrails matter more than a chat interface in front of them.",
+    title: 'Data engineering',
+    copy: 'PostgreSQL, pipelines, and knowledge graphs. Correct aggregation and SQL guardrails matter more than a chat interface in front of them.',
   },
   {
-    title: "Product engineering",
-    copy: "End-to-end delivery with Next.js, React, and FastAPI: interface, API, persistence, and the deployment path in one piece.",
+    title: 'Product engineering',
+    copy: 'End-to-end delivery with Next.js, React, and FastAPI: interface, API, persistence, and the deployment path in one piece.',
   },
   {
-    title: "Statistical work",
-    copy: "Survey data and official BPS figures. Analysis, forecasting, and tools that keep the definitions of the source data intact.",
+    title: 'Statistical work',
+    copy: 'Survey data and official BPS figures. Analysis, forecasting, and tools that keep the definitions of the source data intact.',
   },
 ];
 
 const featuredSpans = [
-  "lg:col-span-7",
-  "lg:col-span-5",
-  "lg:col-span-5",
-  "lg:col-span-7",
+  'lg:col-span-7',
+  'lg:col-span-5',
+  'lg:col-span-5',
+  'lg:col-span-7',
 ];
 
 export default function Home() {
@@ -186,17 +186,23 @@ export default function Home() {
                   <p className="label">Currently</p>
                   <span className="flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-[0.14em] text-muted">
                     <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                    Based in Jambi
+                    Based in Jakarta
                   </span>
                 </div>
 
                 <dl className="divide-y divide-line">
                   {[
-                    ["Role", "Statistics Indonesia (BPS)"],
-                    ["Focus", "Data platforms · quant tooling"],
-                    ["Stack", "TypeScript · Python · SQL"],
+                    ['Role', 'Software Engineer'],
+                    [
+                      'Focus',
+                      'Data platforms · LLM Applications · Quant Tooling · System architecture',
+                    ],
+                    ['Stack', 'TypeScript · Python · SQL'],
                   ].map(([term, value]) => (
-                    <div key={term} className="grid grid-cols-[70px_1fr] gap-4 px-5 py-3.5">
+                    <div
+                      key={term}
+                      className="grid grid-cols-[70px_1fr] gap-4 px-5 py-3.5"
+                    >
                       <dt className="label pt-0.5">{term}</dt>
                       <dd className="text-[13px] leading-snug">{value}</dd>
                     </div>
@@ -207,7 +213,7 @@ export default function Home() {
                   <div className="flex items-end justify-between">
                     <div>
                       <p className="font-mono text-3xl leading-none tracking-[-0.04em]">
-                        {String(projects.length).padStart(2, "0")}
+                        {String(projects.length).padStart(2, '0')}
                       </p>
                       <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.16em] text-muted">
                         Projects on file
@@ -268,7 +274,7 @@ export default function Home() {
               <ProjectCard
                 key={project.slug}
                 project={project}
-                index={String(index + 1).padStart(2, "0")}
+                index={String(index + 1).padStart(2, '0')}
                 onOpen={setSelected}
                 className={featuredSpans[index]}
               />
@@ -276,7 +282,10 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="archive" className="scroll-mt-20 border-y border-line bg-surface">
+        <section
+          id="archive"
+          className="scroll-mt-20 border-y border-line bg-surface"
+        >
           <div className="mx-auto w-full max-w-[1240px] px-6 py-20 md:px-10 md:py-24">
             <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
               <div>
@@ -286,7 +295,7 @@ export default function Home() {
                 </h2>
               </div>
               <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted">
-                {String(archiveProjects.length).padStart(2, "0")} projects ·
+                {String(archiveProjects.length).padStart(2, '0')} projects ·
                 selected archive
               </p>
             </div>
@@ -300,7 +309,7 @@ export default function Home() {
                     className="group grid w-full grid-cols-[2rem_1fr_1.25rem] items-center gap-4 py-4 text-left transition-colors hover:bg-paper md:grid-cols-[2.5rem_1fr_15rem_1.5rem] md:px-2"
                   >
                     <span className="font-mono text-[10px] text-muted">
-                      {String(index + 1).padStart(2, "0")}
+                      {String(index + 1).padStart(2, '0')}
                     </span>
                     <span className="min-w-0">
                       <span className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
@@ -316,7 +325,7 @@ export default function Home() {
                       </span>
                     </span>
                     <span className="hidden truncate font-mono text-[10px] text-muted md:block">
-                      {project.stack.slice(0, 3).join(" · ")}
+                      {project.stack.slice(0, 3).join(' · ')}
                     </span>
                     <IconArrowUpRight
                       size={15}
@@ -370,7 +379,7 @@ export default function Home() {
                     className="border-b border-r border-line bg-surface p-5"
                   >
                     <p className="font-mono text-[9px] text-accent">
-                      {String(index + 1).padStart(2, "0")}
+                      {String(index + 1).padStart(2, '0')}
                     </p>
                     <h3 className="mt-3 text-sm font-medium tracking-tight">
                       {capability.title}
@@ -389,7 +398,10 @@ export default function Home() {
           id="contact"
           className="relative scroll-mt-20 overflow-hidden bg-ink text-paper"
         >
-          <div aria-hidden="true" className="grid-ink absolute inset-0 opacity-60" />
+          <div
+            aria-hidden="true"
+            className="grid-ink absolute inset-0 opacity-60"
+          />
           <div className="relative mx-auto w-full max-w-[1240px] px-6 py-20 md:px-10 md:py-28">
             <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-paper/50">
               04 — Contact
@@ -398,7 +410,7 @@ export default function Home() {
             <div className="mt-8 grid gap-12 lg:grid-cols-12">
               <div className="lg:col-span-8">
                 <h2 className="max-w-[16ch] text-4xl font-medium leading-[0.98] tracking-[-0.045em] md:text-6xl">
-                  Let&rsquo;s make the system{" "}
+                  Let&rsquo;s make the system{' '}
                   <span className="text-accent">legible.</span>
                 </h2>
                 <a
@@ -425,7 +437,11 @@ export default function Home() {
                       <li key={social.name}>
                         <a
                           href={social.href}
-                          target={social.href.startsWith("mailto:") ? undefined : "_blank"}
+                          target={
+                            social.href.startsWith('mailto:')
+                              ? undefined
+                              : '_blank'
+                          }
                           rel="noreferrer"
                           aria-label={social.name}
                           className="grid h-10 w-10 place-items-center border border-paper/20 text-paper/70 transition-colors hover:border-accent hover:bg-accent hover:text-white"
