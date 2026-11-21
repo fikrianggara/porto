@@ -189,7 +189,7 @@ export const archiveProjects: Project[] = [
       "A digital cue card of official BPS Jambi figures, built for quick field reference.",
     stack: ["Next.js", "TailwindCSS", "TypeScript", "Supabase"],
     thumbnail: "/assets/cuecard.png",
-    link: "https://cuecard.bpsjambi.id",
+    link: "https://1500-statistic-indicator.vercel.app/",
   },
   {
     slug: "siitung-v2",
