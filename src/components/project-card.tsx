@@ -39,7 +39,7 @@ export default function ProjectCard({
           {index}
         </span>
         <span className="absolute right-4 top-4 flex translate-y-1 items-center gap-1 bg-ink px-2.5 py-1.5 font-mono text-[10px] uppercase tracking-[0.12em] text-paper opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-          Case study
+          View case study
           <IconArrowUpRight size={12} />
         </span>
       </div>

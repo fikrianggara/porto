@@ -15,9 +15,9 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Fikri Septrian Anggara — Systems & Data",
+  title: "Fikri Septrian Anggara — Systems and data",
   description:
-    "System architect and full-stack developer in Jambi, Indonesia. Data platforms, quantitative tooling, and design systems built for real-world data.",
+    "System architect and full-stack developer in Jakarta, Indonesia. I build data platforms, quantitative tools, and design systems for real-world data.",
 };
 
 export default function RootLayout({

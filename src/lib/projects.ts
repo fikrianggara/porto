@@ -23,11 +23,11 @@ export const featuredProjects: Project[] = [
     summary:
       'An institutional research terminal for the Indonesia Stock Exchange.',
     description:
-      'A four-pillar screening and research platform for IDX equities: fundamental, bandarmology, technical, and sentiment. It combines quantitative scoring, foreign–domestic broker flow, lot-aware portfolio construction, an AI research assistant, and multi-channel alerts in one terminal.',
+      'A four-pillar research platform for IDX equities: fundamentals, broker flow (bandarmology), technicals, and sentiment. It brings quant scoring, portfolios built in whole IDX lots, an AI research assistant, and Telegram and WhatsApp alerts into one terminal.',
     highlights: [
-      'Four screening engines with Top, Mid, and Low tiers, plus dedicated screener pages and CSV export.',
-      'Capital-aware portfolio builder from Rp 1 million to Rp 10 billion, with IDX lot rounding and mandate profiles.',
-      'RBAC on PostgreSQL, Gemini-powered quant insight, PDF dossiers, Telegram and WhatsApp alerts, and a PWA shell.',
+      'Four screening engines with Top, Mid, and Low tiers, each with its own screener page and CSV export.',
+      'A portfolio builder that sizes positions from Rp1 million to Rp10 billion, rounds to IDX lots, and applies mandate profiles.',
+      'Role-based access control on PostgreSQL, quant insight from Gemini, PDF dossiers, Telegram and WhatsApp alerts, and an installable app.',
     ],
     stack: [
       'Next.js 16',
@@ -67,11 +67,11 @@ export const featuredProjects: Project[] = [
     summary:
       'Natural-language statistics search that lands on verified SQL, not guesses.',
     description:
-      'A neuro-symbolic search layer over BPS statistics. A three-layer knowledge graph bridges Indonesian questions to verified SQL, we use a natural-language parser to extract entities, and a promptable LLM synthesizes a narrative answer with citations. The analyst workspace includes maps, ECharts, dynamic tables, saved queries, and a dashboard builder.',
+      'A neuro-symbolic search layer over official statistics from BPS, Indonesia’s statistics agency. A three-layer knowledge graph maps Indonesian questions to verified SQL, a natural-language parser extracts entities, and an LLM writes a cited narrative answer. The analyst workspace adds maps, ECharts, dynamic tables, saved queries, and a dashboard builder.',
     highlights: [
-      'Pipeline from natural-language question to entity resolution, SQL, and a cited narrative.',
-      'Analyst workspace with maps, ECharts, dynamic tables, saved queries, and a dashboard builder.',
-      '270 green tests and 88/88 deterministic evaluations as recorded in the repository.',
+      'A pipeline that turns a natural-language question into resolved entities, SQL, and a cited narrative.',
+      'An analyst workspace with maps, ECharts, dynamic tables, saved queries, and a dashboard builder.',
+      'The repository records 270 passing tests and 88 of 88 deterministic evaluations.',
     ],
     stack: [
       'Python',
@@ -103,13 +103,13 @@ export const featuredProjects: Project[] = [
     category: 'AI Infrastructure',
     domains: ['AI Infrastructure', 'Developer Tools'],
     summary:
-      'Routes each prompt to the right model in under 30 ms, by reading its complexity.',
+      'Reads each prompt’s complexity, then routes it to the right model in under 30 ms.',
     description:
-      'A reverse proxy that scores prompt complexity with Liquid d1, then selects a model from a capability, tag, and cost-aware registry. It exposes both OpenAI and Anthropic compatible endpoints, including bidirectional SSE streaming.',
+      'A reverse proxy that scores prompt complexity with Liquid d1. It picks a model from a registry that tracks capability, tags, and cost. It offers OpenAI- and Anthropic-compatible endpoints, with streaming in both directions over SSE.',
     highlights: [
-      'Continuous complexity score from 1.00 to 5.00 in a single forward pass.',
-      'Dual protocol surface: /v1/chat/completions and /v1/messages with streaming.',
-      'A 16-model registry with routing policies, cost accounting, and deterministic fallback.',
+      'Scores complexity from 1.00 to 5.00 in a single forward pass.',
+      'Serves /v1/chat/completions and /v1/messages, both with streaming.',
+      'A registry of 16 models with routing policies, cost accounting, and a deterministic fallback.',
     ],
     stack: [
       'Hono',
@@ -139,13 +139,13 @@ export const featuredProjects: Project[] = [
     category: 'Developer Tools',
     domains: ['Design Systems', 'Tooling'],
     summary:
-      'A visual studio that compiles design systems into code, schemas, and AI prompts.',
+      'A visual studio that turns design systems into code, schemas, and AI prompts.',
     description:
-      'A canvas editor for assembling primitives, tokens, and components, then compiling them into HTML/CSS/JS, JSON Schema, and AI-promptable Markdown. Tokens follow the DTCG format, and component previews stay isolated inside Shadow DOM.',
+      'A canvas editor for assembling primitives, tokens, and components. It compiles them into HTML, CSS, and JavaScript, plus JSON Schema and Markdown that AI tools can read. Tokens follow the Design Tokens Community Group format, and each preview runs isolated in a Shadow DOM.',
     highlights: [
       'Canvas editor with an inspector for layout, typography, tokens, and inheritance.',
-      'Multi-target compiler: CSS/HTML, JSON Schema, and Markdown written for AI consumption.',
-      'Theme studio, presets, and an IndexedDB-backed local project store.',
+      'Compiles to HTML and CSS, JSON Schema, and Markdown written for AI tools.',
+      'A theme studio, presets, and local projects saved in IndexedDB.',
     ],
     stack: [
       'React 19',
@@ -186,7 +186,7 @@ export const archiveProjects: Project[] = [
     category: 'Web Development',
     domains: ['Web Development', 'Statistics'],
     summary:
-      'A digital cue card of official BPS Jambi figures, built for quick field reference.',
+      'A digital cue card of official BPS Jambi figures for quick reference in the field.',
     stack: ['Next.js', 'TailwindCSS', 'TypeScript', 'Supabase'],
     thumbnail: '/assets/cuecard.png',
     link: 'https://1500-statistic-indicator.vercel.app/',
@@ -208,7 +208,7 @@ export const archiveProjects: Project[] = [
     category: 'Web Development',
     domains: ['Web Development'],
     summary:
-      'Event site and data presentation for the 2024 Sumatera regional PDRB coordination meeting.',
+      'Event site and data presentation for the 2024 Sumatra regional PDRB coordination meeting.',
     stack: ['Next.js', 'TailwindCSS', 'TypeScript'],
     thumbnail: '/assets/konreg.png',
     link: 'https://konreg2024.bpsjambi.id',
@@ -222,7 +222,7 @@ export const archiveProjects: Project[] = [
       'Groups stocks by fundamental indicators using K-Means, DBSCAN, and Gaussian Mixture Models.',
     stack: ['Python'],
     thumbnail: '/assets/stock-analysis.png',
-    link: 'https://github.com/fikrianggara/applied-ML-dicoding/blob/main/submission1/README.md',
+    repo: 'https://github.com/fikrianggara/applied-ML-dicoding/blob/main/submission1/README.md',
   },
   {
     slug: 'transjakarta-forecast',
@@ -233,18 +233,18 @@ export const archiveProjects: Project[] = [
       'A SARIMAX forecast of Transjakarta passenger volume, built for a 2024 data competition.',
     stack: ['Python'],
     thumbnail: '/assets/transjakarta-passenger-forecasting.png',
-    link: 'https://github.com/fikrianggara/indathon-round1-2024/blob/main/main.ipynb',
+    repo: 'https://github.com/fikrianggara/indathon-round1-2024/blob/main/main.ipynb',
   },
   {
     slug: 'microservice',
     title: 'Microservice Implementation',
     category: 'Distributed Systems',
-    domains: ['Distributed System'],
+    domains: ['Distributed Systems'],
     summary:
       'A reference microservice deployment with Docker, Kubernetes, and an Istio service mesh.',
     stack: ['Docker', 'Kubernetes', 'Istio'],
     thumbnail: '/assets/microservice.png',
-    link: 'https://github.com/fikrianggara/microservice',
+    repo: 'https://github.com/fikrianggara/microservice',
   },
   {
     slug: 'airbnb-clone',
@@ -254,7 +254,7 @@ export const archiveProjects: Project[] = [
     summary: 'A Flutter clone of the Airbnb browsing and booking flow.',
     stack: ['Flutter'],
     thumbnail: '/assets/airbnb.png',
-    link: 'https://github.com/fikrianggara/flutter-airbnb-clone',
+    repo: 'https://github.com/fikrianggara/flutter-airbnb-clone',
   },
   {
     slug: 'simosi',
@@ -262,7 +262,7 @@ export const archiveProjects: Project[] = [
     category: 'Web Development',
     domains: ['Web Development'],
     summary:
-      'A survey monitoring system for tracking field enumeration progress across assignments.',
+      'A survey monitoring system that tracks field data collection progress across assignments.',
     stack: ['Next.js', 'TailwindCSS', 'TypeScript', 'Supabase'],
     thumbnail: '/assets/simosi.png',
     link: 'https://simosi.vercel.app/',
@@ -272,37 +272,37 @@ export const archiveProjects: Project[] = [
     title: 'Machine Learning with R',
     category: 'Machine Learning',
     domains: ['Data Science', 'Machine Learning'],
-    summary: 'A collection of machine learning algorithms implemented in R.',
+    summary: 'Machine learning algorithms written in R.',
     stack: ['R'],
     thumbnail: '/assets/ml-r.png',
-    link: 'https://github.com/fikrianggara/machine-learning-algorithm-with-R',
+    repo: 'https://github.com/fikrianggara/machine-learning-algorithm-with-R',
   },
   {
     slug: 'multivariate-r',
     title: 'Multivariate Analysis using R',
     category: 'Statistics',
     domains: ['Data Analysis', 'Statistics'],
-    summary: 'Applied multivariate statistical analysis notebooks in R.',
+    summary: 'Notebooks for applied multivariate statistical analysis in R.',
     stack: ['R'],
     thumbnail: '/assets/multivariate-r.png',
-    link: 'https://github.com/fikrianggara/Multivariate-Analysis-on-R',
+    repo: 'https://github.com/fikrianggara/Multivariate-Analysis-on-R',
   },
   {
     slug: 'ml-python',
     title: 'Machine Learning with Python',
     category: 'Machine Learning',
     domains: ['Data Science', 'Machine Learning'],
-    summary: 'Machine learning implementations and exercises in Python.',
+    summary: 'Machine learning algorithms and exercises in Python.',
     stack: ['Python'],
     thumbnail: '/assets/ml-python.png',
-    link: 'https://github.com/fikrianggara/Machine-learning-with-Python',
+    repo: 'https://github.com/fikrianggara/Machine-learning-with-Python',
   },
   {
     slug: 'expenditure-wizard',
     title: 'Expenditure Wizard',
     category: 'Web Development',
     domains: ['Web Development'],
-    summary: 'A guided wizard for recording and categorising expenses.',
+    summary: 'A guided wizard for recording and categorizing expenses.',
     stack: ['Next.js', 'TailwindCSS', 'TypeScript'],
     thumbnail: '/assets/expenditure-wizard.png',
     link: 'https://expenditure-wizard.vercel.app/',
@@ -319,10 +319,10 @@ export const archiveProjects: Project[] = [
   },
   {
     slug: 'export-sumsel',
-    title: 'South Sumatera Export Dashboard',
+    title: 'South Sumatra Export Dashboard',
     category: 'Data Visualization',
     domains: ['Web Development', 'Data Visualization'],
-    summary: 'An R Shiny dashboard visualising South Sumatera export data.',
+    summary: 'An R Shiny dashboard visualizing South Sumatra export data.',
     stack: ['R Shiny'],
     thumbnail: '/assets/export-sumsel.png',
     link: 'https://fikrianggara26.shinyapps.io/Export-Sumatera_Selatan-2020-Fikri_septrian_anggara-221810306/',

@@ -180,7 +180,7 @@ export default function ProjectModal({
                     key={image}
                     type="button"
                     onClick={() => setActiveImage(index)}
-                    aria-label={`Show screenshot ${index + 1}`}
+                    aria-label={`Show screenshot ${index + 1} of ${gallery.length}`}
                     aria-pressed={index === activeImage}
                     className={cn(
                       "relative h-12 w-20 shrink-0 overflow-hidden border border-line transition-all",
@@ -310,7 +310,7 @@ export default function ProjectModal({
                   {!project.link && !project.repo && (
                     <p className="flex items-start gap-2 border border-line bg-paper px-3 py-3 text-[11px] leading-relaxed text-muted">
                       <IconLock size={14} className="mt-px shrink-0" />
-                      Private build. Source and demo are not public.
+                      Source and demo aren&rsquo;t public.
                     </p>
                   )}
                 </div>

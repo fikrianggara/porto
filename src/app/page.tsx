@@ -66,19 +66,19 @@ const tickerItems = [
 const capabilities = [
   {
     title: 'System architecture',
-    copy: 'Domain models, boundaries, and trade-offs before code. I map the data flow first, then choose the smallest system that holds.',
+    copy: 'Domain models, boundaries, and trade-offs before code. I map the data flow first, then pick the smallest system that can carry it.',
   },
   {
     title: 'Data engineering',
-    copy: 'PostgreSQL, pipelines, and knowledge graphs. Correct aggregation and SQL guardrails matter more than a chat interface in front of them.',
+    copy: 'PostgreSQL, pipelines, and knowledge graphs. Correct aggregation and SQL guardrails matter more than the chat interface on top.',
   },
   {
     title: 'Product engineering',
-    copy: 'End-to-end delivery with Next.js, React, and FastAPI: interface, API, persistence, and the deployment path in one piece.',
+    copy: 'I deliver the whole product with Next.js, React, and FastAPI: interface, API, database, and deployment.',
   },
   {
     title: 'Statistical work',
-    copy: 'Survey data and official BPS figures. Analysis, forecasting, and tools that keep the definitions of the source data intact.',
+    copy: 'Survey data and official figures from Statistics Indonesia. I analyze, forecast, and build tools that keep the source definitions intact.',
   },
 ];
 
@@ -143,7 +143,7 @@ export default function Home() {
                   className="mt-8 grid gap-8 md:grid-cols-[1fr_auto] md:items-end"
                 >
                   <p className="max-w-[52ch] text-[15px] leading-relaxed text-muted md:text-base">
-                    I&rsquo;m Fikri Septrian Anggara — a system architect and
+                    I&rsquo;m Fikri Septrian Anggara, a system architect and
                     full-stack developer at Statistics Indonesia. I build data
                     platforms, quantitative tools, and design systems for work
                     where the numbers have to hold up.
@@ -154,7 +154,7 @@ export default function Home() {
                       href="#work"
                       className="group flex items-center gap-2 bg-ink px-5 py-3 text-[13px] text-paper transition-colors hover:bg-accent"
                     >
-                      Selected work
+                      See selected work
                       <IconArrowDown
                         size={15}
                         className="transition-transform group-hover:translate-y-0.5"
@@ -164,7 +164,7 @@ export default function Home() {
                       href="#about"
                       className="group flex items-center gap-2 border border-line bg-paper px-5 py-3 text-[13px] transition-colors hover:border-ink"
                     >
-                      About
+                      About me
                       <IconArrowRight
                         size={15}
                         className="transition-transform group-hover:translate-x-0.5"
@@ -197,7 +197,7 @@ export default function Home() {
                     ['Role', 'Full-stack developer · System architect'],
                     [
                       'Focus',
-                      'Data platforms · LLM Applications · Quant Tooling · System architecture',
+                      'Data platforms · LLM applications · Quant tooling · System architecture',
                     ],
                     ['Stack', 'TypeScript · Python · SQL'],
                   ].map(([term, value]) => (
@@ -266,8 +266,8 @@ export default function Home() {
             </div>
             <p className="max-w-[38ch] text-sm leading-relaxed text-muted md:text-right">
               Each one started as a messy process: an exchange to read, a
-              question to answer, a design language to keep consistent. Click a
-              project for the detail.
+              question to answer, a design language to keep consistent. Open a
+              project to see how it works.
             </p>
           </div>
 
@@ -359,16 +359,16 @@ export default function Home() {
             <div className="space-y-10 lg:col-span-8">
               <div className="space-y-5 text-[15px] leading-relaxed text-muted">
                 <p>
-                  I work at the point where statistics, data infrastructure, and
-                  product design meet. At Statistics Indonesia, that means
-                  internal tools that make survey data easier to check, publish,
-                  and question. Outside it, it means terminals, search systems,
-                  and developer tools built to be used rather than demoed.
+                  I work where statistics, data infrastructure, and product
+                  design meet. At Statistics Indonesia, I build internal tools
+                  that make survey data easier to check, publish, and challenge.
+                  Outside that role, I build terminals, search systems, and
+                  developer tools meant to be used, not just demoed.
                 </p>
                 <p>
                   I care about clear boundaries: what a system owns, what it
-                  delegates, and how it fails. Before writing a feature I want
-                  the data flow, the failure modes, and the trade-off on the
+                  delegates, and how it fails. Before I write a feature, I want
+                  the data flow, the failure modes, and the trade-offs on the
                   table. Then I build the smallest version that survives contact
                   with real data.
                 </p>
@@ -459,7 +459,7 @@ export default function Home() {
 
             <div className="mt-16 flex flex-col justify-between gap-3 border-t border-paper/15 pt-6 font-mono text-[9px] uppercase tracking-[0.16em] text-paper/40 sm:flex-row">
               <p>© 2026 Fikri Septrian Anggara</p>
-              <p>Indonesia · Last updated Nov 2026</p>
+              <p>Indonesia · Last updated November 2026</p>
             </div>
           </div>
         </section>
