@@ -166,6 +166,26 @@ export const featuredProjects: Project[] = [
       '/assets/design-system/02-theme-studio.jpg',
     ],
   },
+  {
+    slug: 'ascii-studio',
+    title: 'ASCII Studio',
+    category: 'Creative Tools',
+    domains: ['Creative Tools', 'Image Processing'],
+    summary:
+      'Turns any image into editable ASCII art, live in the browser.',
+    description:
+      'A browser-native studio that converts an image into ASCII. Upload a photo, adjust grid density, cell aspect, tone, and edge depth, and watch the output update live. Everything runs locally in a Web Worker, and the result exports as text or a rendered PNG.',
+    highlights: [
+      'Live preview with grid columns, cell aspect, auto-level, brightness, contrast, gamma, edge depth, and sharpness controls.',
+      'Image processing runs in a Web Worker, keeping the interface responsive without uploading the source file.',
+      'Exports copyable text, .txt, and a PNG rendering of the ASCII output.',
+    ],
+    stack: ['React', 'Vite', 'Canvas API', 'Web Worker'],
+    link: 'https://ascii-studio.fikrianggara.com',
+    status: 'Live tool',
+    thumbnail: '/assets/ascii-studio/01-studio.png',
+    gallery: ['/assets/ascii-studio/01-studio.png'],
+  },
 ];
 
 export const archiveProjects: Project[] = [

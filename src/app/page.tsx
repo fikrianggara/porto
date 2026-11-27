@@ -85,8 +85,9 @@ const capabilities = [
 const featuredSpans = [
   'lg:col-span-7',
   'lg:col-span-5',
-  'lg:col-span-5',
-  'lg:col-span-7',
+  'lg:col-span-4',
+  'lg:col-span-4',
+  'lg:col-span-4',
 ];
 
 export default function Home() {
@@ -261,13 +262,13 @@ export default function Home() {
             <div>
               <p className="label">01 — Selected work</p>
               <h2 className="mt-4 max-w-[18ch] text-3xl font-medium leading-[1.02] tracking-[-0.04em] md:text-5xl">
-                Four systems, built end to end.
+                Five systems, built end to end.
               </h2>
             </div>
             <p className="max-w-[38ch] text-sm leading-relaxed text-muted md:text-right">
               Each one started as a messy process: an exchange to read, a
-              question to answer, a design language to keep consistent. Open a
-              project to see how it works.
+              question to answer, a design language to keep consistent, an image
+              to translate. Open a project to see how it works.
             </p>
           </div>
 
